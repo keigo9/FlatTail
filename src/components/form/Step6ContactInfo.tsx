@@ -1,0 +1,96 @@
+import React from 'react';
+import { StepProps } from "../../types";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { ProgressBar } from "./ProgressBar";
+
+interface Step6Props extends StepProps {
+  isSubmitting?: boolean;
+  error?: string | null;
+}
+
+const Step6ContactInfo = ({ data, updateFields, onNext, onPrev, isSubmitting, error }: Step6Props) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (data.name && data.email && data.phone) {
+      onNext();
+    }
+  };
+
+  return (
+    <div className="w-full max-w-md mx-auto">
+      <ProgressBar currentStep={6} totalSteps={6} />
+      
+      <div className="mt-8 text-center">
+        <h2 className="text-2xl font-bold text-gray-800">お客様の情報を入力してください</h2>
+        <p className="text-sm text-gray-500 mt-2">※お客様の情報が一般に公開されることはありません</p>
+      </div>
+      
+      <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+        <div className="space-y-2">
+          <Label htmlFor="name">お名前</Label>
+          <Input
+            id="name"
+            placeholder="山田 太郎"
+            value={data.name}
+            onChange={(e) => updateFields({ name: e.target.value })}
+            required
+          />
+        </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="email">メールアドレス</Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="example@example.com"
+            value={data.email}
+            onChange={(e) => updateFields({ email: e.target.value })}
+            required
+          />
+        </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="phone">電話番号</Label>
+          <Input
+            id="phone"
+            type="tel"
+            placeholder="090-1234-5678"
+            value={data.phone}
+            onChange={(e) => updateFields({ phone: e.target.value })}
+            required
+          />
+        </div>
+        
+        {error && (
+          <div className="p-3 bg-red-100 text-red-700 rounded-md">
+            {error}
+          </div>
+        )}
+        
+        <div className="mt-8 flex justify-between">
+          <Button 
+            type="button"
+            variant="outline" 
+            onClick={onPrev}
+            className="rounded-full"
+            disabled={isSubmitting}
+          >
+            戻る
+          </Button>
+          
+          <Button 
+            type="submit"
+            className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white rounded-full"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? '送信中...' : '診断する'}
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Step6ContactInfo;
