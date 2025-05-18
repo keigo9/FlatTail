@@ -14,9 +14,11 @@ export default {
           main: {
             200: "#FFD8AF",
             600: "#FF6F21",
+            700: "#FF5721",
           },
           mono: {
             700: "#191C1D",
+            1000: "#222",
           },
         },
         sidebar: {
@@ -31,6 +33,8 @@ export default {
         },
       },
       backgroundImage: {
+        "gradation-100":
+          "linear-gradient(47.29deg, #FFD825 5.08%, #FF9035 57.04%, #FF5721 100.09%)",
         "gradation-200":
           "linear-gradient(40.05deg, #FEB970 -0.92%, #FF6F21 45%, #FF5721 101.13%)",
       },

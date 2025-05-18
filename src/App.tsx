@@ -8,15 +8,15 @@ function App() {
   const [startDiagnosis, setStartDiagnosis] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col">
       <Header />
 
       {!startDiagnosis ? (
-        <main className="flex-1 container mx-auto px-4 py-10">
+        <main className="flex-1 container mx-auto py-10">
           <Main setStartDiagnosis={setStartDiagnosis} />
         </main>
       ) : (
-        <main className="flex-1 container mx-auto px-4 py-10">
+        <main className="flex-1 container mx-auto py-10">
           <FormContainer />
         </main>
       )}
