@@ -1,7 +1,11 @@
 import { PhoneIcon } from "@/assets/PhoneIcon";
 import { Button } from "../ui/button";
 
-const Header = () => {
+const Header = ({
+  setStartDiagnosis,
+}: {
+  setStartDiagnosis: (startDiagnosis: boolean) => void;
+}) => {
   const PhoneNumber = "052-211-9290";
   const handlePhoneClick = () => {
     window.location.href = `tel:${PhoneNumber}`;
@@ -9,7 +13,10 @@ const Header = () => {
 
   return (
     <header className="w-full flex justify-between items-center py-2 px-4">
-      <div className="logo">
+      <div
+        className="logo cursor-pointer"
+        onClick={() => setStartDiagnosis(false)}
+      >
         <img
           src="/logo.png"
           alt="FlatTail"
