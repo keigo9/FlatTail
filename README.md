@@ -102,6 +102,24 @@ npm run build
 4. アニメーションの追加
 5. SEO最適化
 
+## GitHub Pages デプロイ
+
+このプロジェクトはGitHub Pagesを使用して自動的にデプロイされます。
+
+### 自動デプロイ
+
+`main`ブランチにプッシュすると、GitHub Actionsを通じて自動的にビルドとデプロイが行われます。デプロイされたサイトは以下のURLで閲覧できます：
+
+https://keigo9.github.io/FlatTail/
+
+### 環境変数
+
+GitHub Pages上でKintone APIを使用するには、以下の環境変数をGitHubリポジトリのSecretsに設定する必要があります：
+
+- `VITE_KINTONE_API_KEY`: Kintone APIキー
+- `VITE_KINTONE_DOMAIN`: Kintoneドメイン
+- `VITE_KINTONE_APP_ID`: KintoneアプリID
+
 ## ライセンス
 
 © 2025 株式会社フラットTAIL All Rights Reserved.
