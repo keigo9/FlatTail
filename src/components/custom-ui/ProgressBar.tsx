@@ -64,28 +64,38 @@ const PcProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
 const MobileProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
     <div className="w-full block md:hidden">
-      <div className="flex justify-between items-center">
+      <div className="flex items-center">
         {Array.from({ length: totalSteps }).map((_, index) => (
-          <div key={index} className="flex flex-col items-center">
+          <div key={index} className="relative flex items-center gap-0">
             <div
-              className={`flex items-center justify-center w-10 h-10 rounded-full ${
+              className={`flex items-center justify-center rounded-full ${
                 index + 1 === currentStep
-                  ? "bg-orange-500 text-white"
-                  : index + 1 < currentStep
-                  ? "bg-orange-300 text-white"
-                  : "bg-gray-200 text-gray-500"
+                  ? "bg-gradation-200 w-8 h-8"
+                  : "bg-token-main-600 w-4 h-4"
               }`}
             >
-              <span className="text-sm font-medium">{index + 1}</span>
+              {index + 1 === currentStep && (
+                <span className="text-[14px] font-bold text-white">
+                  {index + 1}
+                </span>
+              )}
             </div>
             {index < totalSteps - 1 && (
-              <div
-                className={`h-1 w-16 ${
-                  index + 1 < currentStep ? "bg-orange-300" : "bg-gray-200"
-                }`}
-              />
+              <div className="relative w-6 flex items-center">
+                <div
+                  className={`absolute top-1/2 -translate-y-1/2 left-0 h-1 w-full bg-token-main-200`}
+                />
+                <div
+                  className={`absolute top-1/2 -translate-y-1/2 left-0 h-1 bg-token-main-600 ${
+                    index + 1 < currentStep
+                      ? "w-full"
+                      : index + 1 === 1 && currentStep === 1
+                      ? "w-[20%] rounded-r-full"
+                      : "w-0"
+                  }`}
+                />
+              </div>
             )}
-            <span className="text-xs mt-1">{stepLabels[index]}</span>
           </div>
         ))}
       </div>
