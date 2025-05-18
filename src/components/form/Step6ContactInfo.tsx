@@ -1,16 +1,23 @@
-import React from 'react';
+import React from "react";
 import { StepProps } from "../../types";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { ProgressBar } from "./ProgressBar";
+import { ProgressBar } from "../custom-ui/ProgressBar";
 
 interface Step6Props extends StepProps {
   isSubmitting?: boolean;
   error?: string | null;
 }
 
-const Step6ContactInfo = ({ data, updateFields, onNext, onPrev, isSubmitting, error }: Step6Props) => {
+const Step6ContactInfo = ({
+  data,
+  updateFields,
+  onNext,
+  onPrev,
+  isSubmitting,
+  error,
+}: Step6Props) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (data.name && data.email && data.phone) {
@@ -21,12 +28,16 @@ const Step6ContactInfo = ({ data, updateFields, onNext, onPrev, isSubmitting, er
   return (
     <div className="w-full max-w-md mx-auto">
       <ProgressBar currentStep={6} totalSteps={6} />
-      
+
       <div className="mt-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">お客様の情報を入力してください</h2>
-        <p className="text-sm text-gray-500 mt-2">※お客様の情報が一般に公開されることはありません</p>
+        <h2 className="text-2xl font-bold text-gray-800">
+          お客様の情報を入力してください
+        </h2>
+        <p className="text-sm text-gray-500 mt-2">
+          ※お客様の情報が一般に公開されることはありません
+        </p>
       </div>
-      
+
       <form onSubmit={handleSubmit} className="mt-8 space-y-6">
         <div className="space-y-2">
           <Label htmlFor="name">お名前</Label>
@@ -38,7 +49,7 @@ const Step6ContactInfo = ({ data, updateFields, onNext, onPrev, isSubmitting, er
             required
           />
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="email">メールアドレス</Label>
           <Input
@@ -50,7 +61,7 @@ const Step6ContactInfo = ({ data, updateFields, onNext, onPrev, isSubmitting, er
             required
           />
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="phone">電話番号</Label>
           <Input
@@ -62,30 +73,28 @@ const Step6ContactInfo = ({ data, updateFields, onNext, onPrev, isSubmitting, er
             required
           />
         </div>
-        
+
         {error && (
-          <div className="p-3 bg-red-100 text-red-700 rounded-md">
-            {error}
-          </div>
+          <div className="p-3 bg-red-100 text-red-700 rounded-md">{error}</div>
         )}
-        
+
         <div className="mt-8 flex justify-between">
-          <Button 
+          <Button
             type="button"
-            variant="outline" 
+            variant="outline"
             onClick={onPrev}
             className="rounded-full"
             disabled={isSubmitting}
           >
             戻る
           </Button>
-          
-          <Button 
+
+          <Button
             type="submit"
             className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white rounded-full"
             disabled={isSubmitting}
           >
-            {isSubmitting ? '送信中...' : '診断する'}
+            {isSubmitting ? "送信中..." : "診断する"}
           </Button>
         </div>
       </form>

@@ -10,6 +10,15 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        token: {
+          main: {
+            200: "#FFD8AF",
+            600: "#FF6F21",
+          },
+          mono: {
+            700: "#191C1D",
+          },
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -20,6 +29,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      backgroundImage: {
+        "gradation-200":
+          "linear-gradient(40.05deg, #FEB970 -0.92%, #FF6F21 45%, #FF5721 101.13%)",
       },
       keyframes: {
         "accordion-down": {
