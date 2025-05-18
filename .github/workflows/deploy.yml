@@ -32,17 +32,37 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
-        env:
-          VITE_KINTONE_API_KEY: ${{ secrets.VITE_KINTONE_API_KEY }}
-          VITE_KINTONE_DOMAIN: ${{ secrets.VITE_KINTONE_DOMAIN }}
-          VITE_KINTONE_APP_ID: ${{ secrets.VITE_KINTONE_APP_ID }}
+        run: |
+          # Create empty .env file if it doesn't exist
+          touch .env
+          
+          # Add environment variables if they exist in secrets
+          if [ "${{ secrets.VITE_KINTONE_API_KEY }}" != "" ]; then
+            echo "VITE_KINTONE_API_KEY=${{ secrets.VITE_KINTONE_API_KEY }}" >> .env
+          else
+            echo "VITE_KINTONE_API_KEY=dummy_key" >> .env
+          fi
+          
+          if [ "${{ secrets.VITE_KINTONE_DOMAIN }}" != "" ]; then
+            echo "VITE_KINTONE_DOMAIN=${{ secrets.VITE_KINTONE_DOMAIN }}" >> .env
+          else
+            echo "VITE_KINTONE_DOMAIN=example.kintone.com" >> .env
+          fi
+          
+          if [ "${{ secrets.VITE_KINTONE_APP_ID }}" != "" ]; then
+            echo "VITE_KINTONE_APP_ID=${{ secrets.VITE_KINTONE_APP_ID }}" >> .env
+          else
+            echo "VITE_KINTONE_APP_ID=1" >> .env
+          fi
+          
+          # Run build
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v1
         with:
           path: 'dist'
 
