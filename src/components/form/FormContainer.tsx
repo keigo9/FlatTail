@@ -8,6 +8,7 @@ import Step5UsageStatus from "./Step5UsageStatus";
 import Step6ContactInfo from "./Step6ContactInfo";
 import FormSuccess from "./FormSuccess";
 import { submitToKintone } from "../../services/kintoneService";
+import FixedButton from "../common/FixedButton";
 
 const INITIAL_DATA: FormData = {
   energyType: "electric_and_city_gas",
@@ -112,9 +113,19 @@ const FormContainer = () => {
   ];
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-      {steps[currentStep - 1]}
-    </div>
+    <>
+      <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+        {steps[currentStep - 1]}
+      </div>
+      <FixedButton
+        onClick={goToNext}
+        onBackClick={goToPrev}
+        showArrowLeftIcon
+        showArrowRightIcon
+      >
+        次へ
+      </FixedButton>
+    </>
   );
 };
 

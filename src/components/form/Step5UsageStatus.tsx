@@ -1,7 +1,7 @@
 import { StepProps } from "../../types";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
-import { ProgressBar } from "../custom-ui/ProgressBar";
+import { ProgressBar } from "../common/ProgressBar";
 import {
   Select,
   SelectContent,

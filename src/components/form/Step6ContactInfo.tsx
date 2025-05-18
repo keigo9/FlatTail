@@ -3,7 +3,7 @@ import { StepProps } from "../../types";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { ProgressBar } from "../custom-ui/ProgressBar";
+import { ProgressBar } from "../common/ProgressBar";
 
 interface Step6Props extends StepProps {
   isSubmitting?: boolean;

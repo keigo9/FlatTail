@@ -1,6 +1,6 @@
 import { StepProps } from "../../types";
 import { Card } from "../ui/card";
-import { ProgressBar } from "../custom-ui/ProgressBar";
+import { ProgressBar } from "../common/ProgressBar";
 
 const Step1EnergyType = ({ data, updateFields, onNext }: StepProps) => {
   const handleEnergyTypeSelect = (

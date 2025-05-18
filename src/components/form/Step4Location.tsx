@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { ProgressBar } from "../custom-ui/ProgressBar";
+import { ProgressBar } from "../common/ProgressBar";
 
 const Step4Location = ({ data, updateFields, onNext, onPrev }: StepProps) => {
   const prefectures = [

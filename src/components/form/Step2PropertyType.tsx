@@ -1,7 +1,7 @@
 import { StepProps } from "../../types";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
-import { ProgressBar } from "../custom-ui/ProgressBar";
+import { ProgressBar } from "../common/ProgressBar";
 import { Home, Building2, Store } from "lucide-react";
 
 const Step2PropertyType = ({

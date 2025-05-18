@@ -19,12 +19,6 @@ function App() {
           <FormContainer />
         </main>
       )}
-
-      <footer className="bg-gray-100 p-4">
-        <div className="text-center text-gray-500 text-sm">
-          © 2025 株式会社フラットTAIL All Rights Reserved.
-        </div>
-      </footer>
     </div>
   );
 }
