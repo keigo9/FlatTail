@@ -64,11 +64,16 @@ const PcProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
 const MobileProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
     <div className="w-full block md:hidden">
-      <div className="flex items-center">
+      <div className="flex items-center w-full">
         {Array.from({ length: totalSteps }).map((_, index) => (
-          <div key={index} className="relative flex items-center gap-0">
+          <div
+            key={index}
+            className={`relative flex items-center gap-0 ${
+              index === totalSteps - 1 ? "" : "flex-1"
+            }`}
+          >
             <div
-              className={`flex items-center justify-center rounded-full ${
+              className={`flex items-center justify-center rounded-full shrink-0 ${
                 index + 1 === currentStep
                   ? "bg-gradation-200 w-8 h-8"
                   : "bg-token-main-600 w-4 h-4"
@@ -81,7 +86,7 @@ const MobileProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
               )}
             </div>
             {index < totalSteps - 1 && (
-              <div className="relative w-6 flex items-center">
+              <div className="relative flex-1 flex items-center min-w-[24px]">
                 <div
                   className={`absolute top-1/2 -translate-y-1/2 left-0 h-1 w-full bg-token-main-200`}
                 />
