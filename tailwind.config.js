@@ -12,6 +12,7 @@ export default {
       colors: {
         token: {
           main: {
+            100: "#FFE9D2",
             200: "#FFD8AF",
             600: "#FF6F21",
             700: "#FF5721",

@@ -8,7 +8,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full flex justify-between items-center py-2">
+    <header className="w-full flex justify-between items-center py-2 px-4">
       <div className="logo">
         <img
           src="/logo.png"
