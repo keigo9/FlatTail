@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -35,36 +35,36 @@ jobs:
         run: |
           # Create empty .env file if it doesn't exist
           touch .env
-          
+
           # Add environment variables if they exist in secrets
           if [ "${{ secrets.VITE_KINTONE_API_KEY }}" != "" ]; then
             echo "VITE_KINTONE_API_KEY=${{ secrets.VITE_KINTONE_API_KEY }}" >> .env
           else
             echo "VITE_KINTONE_API_KEY=dummy_key" >> .env
           fi
-          
+
           if [ "${{ secrets.VITE_KINTONE_DOMAIN }}" != "" ]; then
             echo "VITE_KINTONE_DOMAIN=${{ secrets.VITE_KINTONE_DOMAIN }}" >> .env
           else
             echo "VITE_KINTONE_DOMAIN=example.kintone.com" >> .env
           fi
-          
+
           if [ "${{ secrets.VITE_KINTONE_APP_ID }}" != "" ]; then
             echo "VITE_KINTONE_APP_ID=${{ secrets.VITE_KINTONE_APP_ID }}" >> .env
           else
             echo "VITE_KINTONE_APP_ID=1" >> .env
           fi
-          
+
           # Run build
           npm run build
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist'
+          path: "dist"
 
   deploy:
     environment:
@@ -75,4 +75,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
