@@ -1,6 +1,5 @@
 import React from "react";
 import { StepProps } from "../../types";
-import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import {
@@ -12,7 +11,7 @@ import {
 } from "../ui/select";
 import { ProgressBar } from "../common/ProgressBar";
 
-const Step4Location = ({ data, updateFields, onNext, onPrev }: StepProps) => {
+const Step4Location = ({ data, updateFields, onNext }: StepProps) => {
   const prefectures = [
     "北海道",
     "青森県",
@@ -124,24 +123,6 @@ const Step4Location = ({ data, updateFields, onNext, onPrev }: StepProps) => {
             onChange={(e) => updateFields({ address: e.target.value })}
             required
           />
-        </div>
-
-        <div className="mt-8 flex justify-between">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={onPrev}
-            className="rounded-full"
-          >
-            戻る
-          </Button>
-
-          <Button
-            type="submit"
-            className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white rounded-full"
-          >
-            次へ
-          </Button>
         </div>
       </form>
     </div>

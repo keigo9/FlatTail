@@ -16,7 +16,7 @@ function App() {
         </main>
       ) : (
         <main className="flex-1 py-10 px-4 bg-token-main-100">
-          <FormContainer />
+          <FormContainer setStartDiagnosis={setStartDiagnosis} />
         </main>
       )}
     </div>

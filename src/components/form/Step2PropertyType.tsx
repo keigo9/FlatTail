@@ -1,15 +1,9 @@
 import { StepProps } from "../../types";
-import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
 import { Home, Building2, Store } from "lucide-react";
 
-const Step2PropertyType = ({
-  data,
-  updateFields,
-  onNext,
-  onPrev,
-}: StepProps) => {
+const Step2PropertyType = ({ data, updateFields, onNext }: StepProps) => {
   const handlePropertyTypeSelect = (
     type: "detached_house" | "apartment" | "store"
   ) => {
@@ -83,12 +77,6 @@ const Step2PropertyType = ({
             </div>
           </div>
         </Card>
-      </div>
-
-      <div className="mt-8 flex justify-between">
-        <Button variant="outline" onClick={onPrev} className="rounded-full">
-          戻る
-        </Button>
       </div>
     </div>
   );

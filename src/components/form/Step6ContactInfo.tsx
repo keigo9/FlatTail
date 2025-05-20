@@ -1,23 +1,10 @@
 import React from "react";
 import { StepProps } from "../../types";
-import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { ProgressBar } from "../common/ProgressBar";
 
-interface Step6Props extends StepProps {
-  isSubmitting?: boolean;
-  error?: string | null;
-}
-
-const Step6ContactInfo = ({
-  data,
-  updateFields,
-  onNext,
-  onPrev,
-  isSubmitting,
-  error,
-}: Step6Props) => {
+const Step6ContactInfo = ({ data, updateFields, onNext }: StepProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (data.name && data.email && data.phone) {
@@ -72,30 +59,6 @@ const Step6ContactInfo = ({
             onChange={(e) => updateFields({ phone: e.target.value })}
             required
           />
-        </div>
-
-        {error && (
-          <div className="p-3 bg-red-100 text-red-700 rounded-md">{error}</div>
-        )}
-
-        <div className="mt-8 flex justify-between">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={onPrev}
-            className="rounded-full"
-            disabled={isSubmitting}
-          >
-            戻る
-          </Button>
-
-          <Button
-            type="submit"
-            className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white rounded-full"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "送信中..." : "診断する"}
-          </Button>
         </div>
       </form>
     </div>

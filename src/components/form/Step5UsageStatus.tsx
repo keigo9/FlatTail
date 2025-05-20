@@ -1,5 +1,4 @@
 import { StepProps } from "../../types";
-import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { ProgressBar } from "../common/ProgressBar";
 import {
@@ -10,12 +9,7 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const Step5UsageStatus = ({
-  data,
-  updateFields,
-  onNext,
-  onPrev,
-}: StepProps) => {
+const Step5UsageStatus = ({ data, updateFields, onNext }: StepProps) => {
   const usageOptions = [
     { value: "low", label: "少ない (月に5,000円以下)" },
     { value: "medium", label: "普通 (月に5,000円〜10,000円)" },
@@ -58,24 +52,6 @@ const Step5UsageStatus = ({
               ))}
             </SelectContent>
           </Select>
-        </div>
-
-        <div className="mt-8 flex justify-between">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={onPrev}
-            className="rounded-full"
-          >
-            戻る
-          </Button>
-
-          <Button
-            type="submit"
-            className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white rounded-full"
-          >
-            次へ
-          </Button>
         </div>
       </form>
     </div>

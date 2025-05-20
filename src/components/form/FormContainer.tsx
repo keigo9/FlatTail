@@ -23,7 +23,11 @@ const INITIAL_DATA: FormData = {
   phone: "",
 };
 
-const FormContainer = () => {
+const FormContainer = ({
+  setStartDiagnosis,
+}: {
+  setStartDiagnosis: (startDiagnosis: boolean) => void;
+}) => {
   const [data, setData] = useState<FormData>(INITIAL_DATA);
   const [currentStep, setCurrentStep] = useState<FormStep>(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +43,11 @@ const FormContainer = () => {
   };
 
   const goToPrev = () => {
-    setCurrentStep((prev) => (prev > 1 ? ((prev - 1) as FormStep) : prev));
+    if (currentStep === 1) {
+      setStartDiagnosis(false);
+      return;
+    }
+    setCurrentStep((prev) => (prev - 1) as FormStep);
   };
 
   const handleSubmit = async () => {
@@ -71,49 +79,44 @@ const FormContainer = () => {
       data={data}
       updateFields={updateFields}
       onNext={goToNext}
-      onPrev={goToPrev}
     />,
     <Step2PropertyType
       key="step2"
       data={data}
       updateFields={updateFields}
       onNext={goToNext}
-      onPrev={goToPrev}
     />,
     <Step3PropertyStatus
       key="step3"
       data={data}
       updateFields={updateFields}
       onNext={goToNext}
-      onPrev={goToPrev}
     />,
     <Step4Location
       key="step4"
       data={data}
       updateFields={updateFields}
       onNext={goToNext}
-      onPrev={goToPrev}
     />,
     <Step5UsageStatus
       key="step5"
       data={data}
       updateFields={updateFields}
       onNext={goToNext}
-      onPrev={goToPrev}
     />,
     <Step6ContactInfo
       key="step6"
       data={data}
       updateFields={updateFields}
       onNext={handleSubmit}
-      onPrev={goToPrev}
-      isSubmitting={isSubmitting}
-      error={error}
     />,
   ];
 
   return (
     <>
+      {error && (
+        <div className="p-3 bg-red-100 text-red-700 rounded-md">{error}</div>
+      )}
       <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
         {steps[currentStep - 1]}
       </div>
@@ -122,6 +125,7 @@ const FormContainer = () => {
         onBackClick={goToPrev}
         showArrowLeftIcon
         showArrowRightIcon
+        isSubmitting={isSubmitting}
       >
         次へ
       </FixedButton>

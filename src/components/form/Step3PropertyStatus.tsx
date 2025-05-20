@@ -1,15 +1,9 @@
 import { StepProps } from "../../types";
-import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
 import { Home, MoveRight } from "lucide-react";
 
-const Step3PropertyStatus = ({
-  data,
-  updateFields,
-  onNext,
-  onPrev,
-}: StepProps) => {
+const Step3PropertyStatus = ({ data, updateFields, onNext }: StepProps) => {
   const handlePropertyStatusSelect = (
     status: "current_residence" | "moving_location"
   ) => {
@@ -63,12 +57,6 @@ const Step3PropertyStatus = ({
             </div>
           </div>
         </Card>
-      </div>
-
-      <div className="mt-8 flex justify-between">
-        <Button variant="outline" onClick={onPrev} className="rounded-full">
-          戻る
-        </Button>
       </div>
     </div>
   );

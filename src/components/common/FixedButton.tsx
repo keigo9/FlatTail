@@ -10,6 +10,7 @@ interface FixedButtonProps {
   showGlassIcon?: boolean;
   showArrowLeftIcon?: boolean;
   showArrowRightIcon?: boolean;
+  isSubmitting?: boolean;
   children: ReactNode;
 }
 
@@ -20,6 +21,7 @@ const FixedButton = ({
   showGlassIcon = false,
   showArrowLeftIcon = false,
   showArrowRightIcon = false,
+  isSubmitting = false,
   children,
 }: FixedButtonProps) => {
   return (
@@ -27,10 +29,10 @@ const FixedButton = ({
       {showArrowLeftIcon && <BackButton onClick={onBackClick} />}
       <button
         onClick={onClick}
-        disabled={disabled}
+        disabled={disabled || isSubmitting}
         className={`w-full max-w-[352px] mx-auto h-[48px] rounded-full text-white font-bold flex flex-1 items-center justify-center
           ${
-            disabled
+            disabled || isSubmitting
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-gradation-100 hover:opacity-90"
           }`}
