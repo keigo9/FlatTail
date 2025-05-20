@@ -4,14 +4,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { ProgressBar } from "../common/ProgressBar";
 
-const Step6ContactInfo = ({ data, updateFields, onNext }: StepProps) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (data.name && data.email && data.phone) {
-      onNext();
-    }
-  };
-
+const Step6ContactInfo = ({ data, updateFields }: StepProps) => {
   return (
     <div className="w-full max-w-md mx-auto">
       <ProgressBar currentStep={6} totalSteps={6} />
@@ -25,7 +18,7 @@ const Step6ContactInfo = ({ data, updateFields, onNext }: StepProps) => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+      <form className="mt-8 space-y-6">
         <div className="space-y-2">
           <Label htmlFor="name">お名前</Label>
           <Input

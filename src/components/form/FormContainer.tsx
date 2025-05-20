@@ -39,7 +39,11 @@ const FormContainer = ({
   };
 
   const goToNext = () => {
-    setCurrentStep((prev) => (prev < 6 ? ((prev + 1) as FormStep) : prev));
+    if (currentStep === 6) {
+      handleSubmit();
+      return;
+    }
+    setCurrentStep((prev) => (prev + 1) as FormStep);
   };
 
   const goToPrev = () => {
@@ -74,42 +78,12 @@ const FormContainer = ({
   }
 
   const steps = [
-    <Step1EnergyType
-      key="step1"
-      data={data}
-      updateFields={updateFields}
-      onNext={goToNext}
-    />,
-    <Step2PropertyType
-      key="step2"
-      data={data}
-      updateFields={updateFields}
-      onNext={goToNext}
-    />,
-    <Step3PropertyStatus
-      key="step3"
-      data={data}
-      updateFields={updateFields}
-      onNext={goToNext}
-    />,
-    <Step4Location
-      key="step4"
-      data={data}
-      updateFields={updateFields}
-      onNext={goToNext}
-    />,
-    <Step5UsageStatus
-      key="step5"
-      data={data}
-      updateFields={updateFields}
-      onNext={goToNext}
-    />,
-    <Step6ContactInfo
-      key="step6"
-      data={data}
-      updateFields={updateFields}
-      onNext={handleSubmit}
-    />,
+    <Step1EnergyType key="step1" data={data} updateFields={updateFields} />,
+    <Step2PropertyType key="step2" data={data} updateFields={updateFields} />,
+    <Step3PropertyStatus key="step3" data={data} updateFields={updateFields} />,
+    <Step4Location key="step4" data={data} updateFields={updateFields} />,
+    <Step5UsageStatus key="step5" data={data} updateFields={updateFields} />,
+    <Step6ContactInfo key="step6" data={data} updateFields={updateFields} />,
   ];
 
   return (

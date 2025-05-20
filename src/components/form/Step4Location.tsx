@@ -11,7 +11,7 @@ import {
 } from "../ui/select";
 import { ProgressBar } from "../common/ProgressBar";
 
-const Step4Location = ({ data, updateFields, onNext }: StepProps) => {
+const Step4Location = ({ data, updateFields }: StepProps) => {
   const prefectures = [
     "北海道",
     "青森県",
@@ -62,13 +62,6 @@ const Step4Location = ({ data, updateFields, onNext }: StepProps) => {
     "沖縄県",
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (data.postalCode && data.prefecture && data.address) {
-      onNext();
-    }
-  };
-
   return (
     <div className="w-full max-w-md mx-auto">
       <ProgressBar currentStep={4} totalSteps={6} />
@@ -82,7 +75,7 @@ const Step4Location = ({ data, updateFields, onNext }: StepProps) => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+      <form className="mt-8 space-y-6">
         <div className="space-y-2">
           <Label htmlFor="postalCode">郵便番号</Label>
           <Input

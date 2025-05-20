@@ -3,12 +3,11 @@ import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
 import { Home, Building2, Store } from "lucide-react";
 
-const Step2PropertyType = ({ data, updateFields, onNext }: StepProps) => {
+const Step2PropertyType = ({ data, updateFields }: StepProps) => {
   const handlePropertyTypeSelect = (
     type: "detached_house" | "apartment" | "store"
   ) => {
     updateFields({ propertyType: type });
-    onNext();
   };
 
   return (

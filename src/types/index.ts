@@ -24,5 +24,4 @@ export type FormStep = 1 | 2 | 3 | 4 | 5 | 6;
 export interface StepProps {
   data: FormData;
   updateFields: (fields: Partial<FormData>) => void;
-  onNext: () => void;
 }

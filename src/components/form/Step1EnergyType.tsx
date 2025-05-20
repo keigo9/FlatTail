@@ -2,12 +2,11 @@ import { StepProps } from "../../types";
 import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
 
-const Step1EnergyType = ({ data, updateFields, onNext }: StepProps) => {
+const Step1EnergyType = ({ data, updateFields }: StepProps) => {
   const handleEnergyTypeSelect = (
     type: "electric_and_city_gas" | "electric_and_propane_gas" | "all_electric"
   ) => {
     updateFields({ energyType: type });
-    onNext();
   };
 
   return (

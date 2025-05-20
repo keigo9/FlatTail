@@ -3,12 +3,11 @@ import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
 import { Home, MoveRight } from "lucide-react";
 
-const Step3PropertyStatus = ({ data, updateFields, onNext }: StepProps) => {
+const Step3PropertyStatus = ({ data, updateFields }: StepProps) => {
   const handlePropertyStatusSelect = (
     status: "current_residence" | "moving_location"
   ) => {
     updateFields({ propertyStatus: status });
-    onNext();
   };
 
   return (
