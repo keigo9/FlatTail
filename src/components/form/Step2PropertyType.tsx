@@ -2,8 +2,21 @@ import { StepProps } from "../../types";
 import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
 import { Home, Building2, Store } from "lucide-react";
+import { useEffect } from "react";
 
-const Step2PropertyType = ({ data, updateFields }: StepProps) => {
+const Step2PropertyType = ({
+  data,
+  updateFields,
+  setIsButtonDisabled,
+}: StepProps) => {
+  useEffect(() => {
+    if (data.propertyType) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [data.propertyType, setIsButtonDisabled]);
+
   const handlePropertyTypeSelect = (
     type: "detached_house" | "apartment" | "store"
   ) => {

@@ -33,7 +33,7 @@ const FixedButton = ({
         className={`w-full max-w-[352px] mx-auto h-[48px] rounded-full text-white font-bold flex flex-1 items-center justify-center
           ${
             disabled || isSubmitting
-              ? "bg-gray-300 cursor-not-allowed"
+              ? "bg-button-primary-disabled cursor-not-allowed"
               : "bg-gradation-100 hover:opacity-90"
           }`}
       >

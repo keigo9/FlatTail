@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StepProps } from "../../types";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -11,7 +11,11 @@ import {
 } from "../ui/select";
 import { ProgressBar } from "../common/ProgressBar";
 
-const Step4Location = ({ data, updateFields }: StepProps) => {
+const Step4Location = ({
+  data,
+  updateFields,
+  setIsButtonDisabled,
+}: StepProps) => {
   const prefectures = [
     "北海道",
     "青森県",
@@ -61,6 +65,14 @@ const Step4Location = ({ data, updateFields }: StepProps) => {
     "鹿児島県",
     "沖縄県",
   ];
+
+  useEffect(() => {
+    if (data.postalCode && data.prefecture && data.address) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [data.postalCode, data.prefecture, data.address, setIsButtonDisabled]);
 
   return (
     <div className="w-full max-w-md mx-auto">

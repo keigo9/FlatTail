@@ -1,8 +1,21 @@
 import { StepProps } from "../../types";
 import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
+import { useEffect } from "react";
 
-const Step1EnergyType = ({ data, updateFields }: StepProps) => {
+const Step1EnergyType = ({
+  data,
+  updateFields,
+  setIsButtonDisabled,
+}: StepProps) => {
+  useEffect(() => {
+    if (data.energyType) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [data.energyType, setIsButtonDisabled]);
+
   const handleEnergyTypeSelect = (
     type: "electric_and_city_gas" | "electric_and_propane_gas" | "all_electric"
   ) => {

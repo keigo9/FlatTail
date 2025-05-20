@@ -23,6 +23,11 @@ export default {
             1000: "#222",
           },
         },
+        button: {
+          primary: {
+            disabled: "#EFF1F1",
+          },
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

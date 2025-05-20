@@ -2,8 +2,21 @@ import { StepProps } from "../../types";
 import { Card } from "../ui/card";
 import { ProgressBar } from "../common/ProgressBar";
 import { Home, MoveRight } from "lucide-react";
+import { useEffect } from "react";
 
-const Step3PropertyStatus = ({ data, updateFields }: StepProps) => {
+const Step3PropertyStatus = ({
+  data,
+  updateFields,
+  setIsButtonDisabled,
+}: StepProps) => {
+  useEffect(() => {
+    if (data.propertyStatus) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [data.propertyStatus, setIsButtonDisabled]);
+
   const handlePropertyStatusSelect = (
     status: "current_residence" | "moving_location"
   ) => {

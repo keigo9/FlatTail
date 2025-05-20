@@ -11,9 +11,9 @@ import { submitToKintone } from "../../services/kintoneService";
 import FixedButton from "../common/FixedButton";
 
 const INITIAL_DATA: FormData = {
-  energyType: "electric_and_city_gas",
-  propertyType: "detached_house",
-  propertyStatus: "current_residence",
+  energyType: null,
+  propertyType: null,
+  propertyStatus: null,
   postalCode: "",
   prefecture: "",
   address: "",
@@ -30,6 +30,7 @@ const FormContainer = ({
 }) => {
   const [data, setData] = useState<FormData>(INITIAL_DATA);
   const [currentStep, setCurrentStep] = useState<FormStep>(1);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -78,12 +79,42 @@ const FormContainer = ({
   }
 
   const steps = [
-    <Step1EnergyType key="step1" data={data} updateFields={updateFields} />,
-    <Step2PropertyType key="step2" data={data} updateFields={updateFields} />,
-    <Step3PropertyStatus key="step3" data={data} updateFields={updateFields} />,
-    <Step4Location key="step4" data={data} updateFields={updateFields} />,
-    <Step5UsageStatus key="step5" data={data} updateFields={updateFields} />,
-    <Step6ContactInfo key="step6" data={data} updateFields={updateFields} />,
+    <Step1EnergyType
+      key="step1"
+      data={data}
+      updateFields={updateFields}
+      setIsButtonDisabled={setIsButtonDisabled}
+    />,
+    <Step2PropertyType
+      key="step2"
+      data={data}
+      updateFields={updateFields}
+      setIsButtonDisabled={setIsButtonDisabled}
+    />,
+    <Step3PropertyStatus
+      key="step3"
+      data={data}
+      updateFields={updateFields}
+      setIsButtonDisabled={setIsButtonDisabled}
+    />,
+    <Step4Location
+      key="step4"
+      data={data}
+      updateFields={updateFields}
+      setIsButtonDisabled={setIsButtonDisabled}
+    />,
+    <Step5UsageStatus
+      key="step5"
+      data={data}
+      updateFields={updateFields}
+      setIsButtonDisabled={setIsButtonDisabled}
+    />,
+    <Step6ContactInfo
+      key="step6"
+      data={data}
+      updateFields={updateFields}
+      setIsButtonDisabled={setIsButtonDisabled}
+    />,
   ];
 
   return (
@@ -100,6 +131,7 @@ const FormContainer = ({
         showArrowLeftIcon
         showArrowRightIcon
         isSubmitting={isSubmitting}
+        disabled={isButtonDisabled}
       >
         次へ
       </FixedButton>

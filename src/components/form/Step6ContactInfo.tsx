@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StepProps } from "../../types";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { ProgressBar } from "../common/ProgressBar";
 
-const Step6ContactInfo = ({ data, updateFields }: StepProps) => {
+const Step6ContactInfo = ({
+  data,
+  updateFields,
+  setIsButtonDisabled,
+}: StepProps) => {
+  useEffect(() => {
+    if (data.name && data.email && data.phone) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [data.name, data.email, data.phone, setIsButtonDisabled]);
+
   return (
     <div className="w-full max-w-md mx-auto">
       <ProgressBar currentStep={6} totalSteps={6} />
