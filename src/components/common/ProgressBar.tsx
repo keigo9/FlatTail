@@ -23,7 +23,7 @@ export const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
 
 const PcProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
-    <div className="w-full hidden md:block">
+    <div className="w-full hidden sm:block">
       <div className="flex justify-center items-center">
         {Array.from({ length: totalSteps }).map((_, index) => (
           <div key={index} className="relative flex flex-col items-center">
@@ -63,7 +63,7 @@ const PcProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
 
 const MobileProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
-    <div className="w-full block md:hidden">
+    <div className="w-full block sm:hidden">
       <div className="flex items-center w-full">
         {Array.from({ length: totalSteps }).map((_, index) => (
           <div
