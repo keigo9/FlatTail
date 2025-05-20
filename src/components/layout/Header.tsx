@@ -18,7 +18,7 @@ const Header = ({
         onClick={() => setStartDiagnosis(false)}
       >
         <img
-          src="/logo.png"
+          src={`${import.meta.env.BASE_URL}logo.png`}
           alt="FlatTail"
           className="object-contain w-[75px]"
         />
