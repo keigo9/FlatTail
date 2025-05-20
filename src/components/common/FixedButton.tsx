@@ -25,12 +25,12 @@ const FixedButton = ({
   children,
 }: FixedButtonProps) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 p-4 flex gap-2 items-center justify-center bg-white">
+    <div className="fixed bottom-0 left-0 right-0 p-4 flex gap-2 md:gap-10 items-center justify-center bg-white">
       {showArrowLeftIcon && <BackButton onClick={onBackClick} />}
       <button
         onClick={onClick}
         disabled={disabled || isSubmitting}
-        className={`w-full max-w-[352px] mx-auto h-[48px] rounded-full text-white font-bold flex flex-1 items-center justify-center
+        className={`w-full max-w-[352px] h-[48px] rounded-full text-white font-bold flex flex-1 items-center justify-center
           ${
             disabled || isSubmitting
               ? "bg-button-primary-disabled cursor-not-allowed"
