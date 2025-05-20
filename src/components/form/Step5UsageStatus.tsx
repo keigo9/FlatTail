@@ -1,6 +1,5 @@
 import { StepProps } from "../../types";
 import { Label } from "../ui/label";
-import { ProgressBar } from "../common/ProgressBar";
 import {
   Select,
   SelectContent,
@@ -30,9 +29,7 @@ const Step5UsageStatus = ({
   }, [data.usageStatus, setIsButtonDisabled]);
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <ProgressBar currentStep={5} totalSteps={6} />
-
+    <div className="w-full">
       <div className="mt-8 text-center">
         <h2 className="text-2xl font-bold text-gray-800">
           現在の電気使用量を教えてください

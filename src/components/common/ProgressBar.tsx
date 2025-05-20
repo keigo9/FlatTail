@@ -24,7 +24,7 @@ export const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
 const PcProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
     <div className="w-full hidden md:block">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-center items-center">
         {Array.from({ length: totalSteps }).map((_, index) => (
           <div key={index} className="relative flex flex-col items-center">
             <div className="flex items-center">

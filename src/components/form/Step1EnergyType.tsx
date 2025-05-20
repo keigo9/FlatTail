@@ -1,6 +1,5 @@
 import { StepProps } from "../../types";
 import { Card } from "../ui/card";
-import { ProgressBar } from "../common/ProgressBar";
 import { useEffect } from "react";
 
 const Step1EnergyType = ({
@@ -23,9 +22,7 @@ const Step1EnergyType = ({
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <ProgressBar currentStep={1} totalSteps={6} />
-
+    <div className="w-full">
       <div className="mt-8 text-center">
         <h2 className="text-2xl font-bold text-gray-800">
           利用しているエネルギーは

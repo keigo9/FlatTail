@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { StepProps } from "../../types";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { ProgressBar } from "../common/ProgressBar";
 
 const Step6ContactInfo = ({
   data,
@@ -18,9 +17,7 @@ const Step6ContactInfo = ({
   }, [data.name, data.email, data.phone, setIsButtonDisabled]);
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <ProgressBar currentStep={6} totalSteps={6} />
-
+    <div className="w-full">
       <div className="mt-8 text-center">
         <h2 className="text-2xl font-bold text-gray-800">
           お客様の情報を入力してください

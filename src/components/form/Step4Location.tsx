@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { StepProps } from "../../types";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -9,7 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { ProgressBar } from "../common/ProgressBar";
 
 const Step4Location = ({
   data,
@@ -75,9 +74,7 @@ const Step4Location = ({
   }, [data.postalCode, data.prefecture, data.address, setIsButtonDisabled]);
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <ProgressBar currentStep={4} totalSteps={6} />
-
+    <div className="w-full">
       <div className="mt-8 text-center">
         <h2 className="text-2xl font-bold text-gray-800">
           電気の利用先住所を教えてください

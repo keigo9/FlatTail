@@ -9,6 +9,7 @@ import Step6ContactInfo from "./Step6ContactInfo";
 import FormSuccess from "./FormSuccess";
 import { submitToKintone } from "../../services/kintoneService";
 import FixedButton from "../common/FixedButton";
+import { ProgressBar } from "../common/ProgressBar";
 
 const INITIAL_DATA: FormData = {
   energyType: null,
@@ -122,8 +123,11 @@ const FormContainer = ({
       {error && (
         <div className="p-3 bg-red-100 text-red-700 rounded-md">{error}</div>
       )}
-      <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-        {steps[currentStep - 1]}
+      <div className="w-full max-w-2xl mx-auto">
+        <ProgressBar currentStep={currentStep} totalSteps={6} />
+        <div className="mt-12 bg-white rounded-lg p-6">
+          {steps[currentStep - 1]}
+        </div>
       </div>
       <FixedButton
         onClick={goToNext}

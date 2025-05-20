@@ -1,6 +1,5 @@
 import { StepProps } from "../../types";
 import { Card } from "../ui/card";
-import { ProgressBar } from "../common/ProgressBar";
 import { Home, MoveRight } from "lucide-react";
 import { useEffect } from "react";
 
@@ -24,9 +23,7 @@ const Step3PropertyStatus = ({
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <ProgressBar currentStep={3} totalSteps={6} />
-
+    <div className="w-full">
       <div className="mt-8 text-center">
         <h2 className="text-2xl font-bold text-gray-800">
           どちらで電気を利用しますか？
