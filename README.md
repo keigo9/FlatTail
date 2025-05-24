@@ -50,13 +50,7 @@ npm run dev
 
 ## 環境変数の設定
 
-`.env`ファイルを作成し、以下の変数を設定してください：
-
-```
-VITE_KINTONE_API_KEY=your_api_key
-VITE_KINTONE_DOMAIN=example.kintone.com
-VITE_KINTONE_APP_ID=your_app_id
-```
+`.env`ファイルを作成し、.env.example を参考に変数を設定してください：
 
 ## Kintone API 連携
 
@@ -116,11 +110,7 @@ https://keigo9.github.io/FlatTail/
 
 ### 環境変数
 
-GitHub Pages 上で Kintone API を使用するには、以下の環境変数を GitHub リポジトリの Secrets に設定する必要があります：
-
-- `VITE_KINTONE_API_KEY`: Kintone API キー
-- `VITE_KINTONE_DOMAIN`: Kintone ドメイン
-- `VITE_KINTONE_APP_ID`: Kintone アプリ ID
+GitHub Pages 上で .env の環境変数を GitHub リポジトリの Secrets に設定する必要があります：
 
 ## ライセンス
 

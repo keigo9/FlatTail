@@ -1,9 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_KINTONE_API_KEY: string;
-  readonly VITE_KINTONE_DOMAIN: string;
-  readonly VITE_KINTONE_APP_ID: string;
+  readonly VITE_FIREBASE_FUNCTION_URL: string;
 }
 
 interface ImportMeta {
