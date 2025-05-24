@@ -2,30 +2,65 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 18
+          cache: "npm"
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build
-        env:
-          VITE_FIREBASE_FUNCTION_URL: ${{ secrets.VITE_FIREBASE_FUNCTION_URL }}
-        run: npm run build
+        run: |
+          # Create empty .env file if it doesn't exist
+          touch .env
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+          # Add environment variables if they exist in secrets
+          if [ "${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" != "" ]; then
+            echo "VITE_FIREBASE_FUNCTION_URL=${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" >> .env
+          else
+            echo "VITE_FIREBASE_FUNCTION_URL=http://localhost:5001/your-project/function-name" >> .env
+          fi
+
+          # Run build
+          npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: "dist"
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
