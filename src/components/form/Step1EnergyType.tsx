@@ -87,7 +87,7 @@ const Step1EnergyType = ({
 
       <SelectCard
         cardData={cardData}
-        handleEnergyTypeSelect={handleEnergyTypeSelect}
+        handleTypeSelect={handleEnergyTypeSelect}
         currentType={data.energyType}
       />
     </div>

@@ -1,8 +1,11 @@
-import { StepProps } from "../../types";
-import { Card } from "../ui/card";
-import { Home, Building2, Store } from "lucide-react";
+import { PropertyType, StepProps } from "../../types";
 import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
+import { SelectCard } from "./SelectCard";
+import { HomeIcon } from "@/assets/HomeIcon";
+import { BuildingIcon } from "@/assets/BuildingIcon";
+import { StoreIcon } from "@/assets/StoreIcon";
+import { cn } from "@/lib/utils";
 
 const Step2PropertyType = ({
   data,
@@ -17,11 +20,42 @@ const Step2PropertyType = ({
     }
   }, [data.propertyType, setIsButtonDisabled]);
 
-  const handlePropertyTypeSelect = (
-    type: "detached_house" | "apartment" | "store"
-  ) => {
+  const handlePropertyTypeSelect = (type: PropertyType) => {
     updateFields({ propertyType: type });
   };
+
+  const cardData = [
+    {
+      icon: <HomeIcon />,
+      title: "戸建て",
+      type: PropertyType.DETACHED_HOUSE,
+    },
+    {
+      icon: <BuildingIcon />,
+      title: (
+        <>
+          マンション・
+          <br className="sm:hidden" />
+          アパート
+        </>
+      ),
+      type: PropertyType.APARTMENT,
+    },
+    {
+      icon: (
+        <StoreIcon
+          className={cn(
+            data.propertyType === PropertyType.STORE
+              ? "text-token-main-800"
+              : "text-token-main-600"
+          )}
+        />
+      ),
+      title: "店舗",
+      type: PropertyType.STORE,
+      isWhite: true,
+    },
+  ];
 
   return (
     <div className="w-full">
@@ -35,61 +69,11 @@ const Step2PropertyType = ({
         }
       />
 
-      <div className="mt-8 space-y-4">
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.propertyType === "detached_house"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handlePropertyTypeSelect("detached_house")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <Home className="h-6 w-6 text-white" />
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">戸建て</p>
-            </div>
-          </div>
-        </Card>
-
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.propertyType === "apartment"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handlePropertyTypeSelect("apartment")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <Building2 className="h-6 w-6 text-white" />
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">マンション・アパート</p>
-            </div>
-          </div>
-        </Card>
-
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.propertyType === "store"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handlePropertyTypeSelect("store")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <Store className="h-6 w-6 text-white" />
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">店舗</p>
-            </div>
-          </div>
-        </Card>
-      </div>
+      <SelectCard
+        cardData={cardData}
+        handleTypeSelect={handlePropertyTypeSelect}
+        currentType={data.propertyType}
+      />
     </div>
   );
 };

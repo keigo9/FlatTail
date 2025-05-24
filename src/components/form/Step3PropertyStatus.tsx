@@ -1,8 +1,8 @@
-import { StepProps } from "../../types";
-import { Card } from "../ui/card";
-import { Home, MoveRight } from "lucide-react";
+import { PropertyStatus, StepProps } from "../../types";
 import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
+import { HomeIcon } from "@/assets/HomeIcon";
+import { SelectCard } from "./SelectCard";
 
 const Step3PropertyStatus = ({
   data,
@@ -17,53 +17,38 @@ const Step3PropertyStatus = ({
     }
   }, [data.propertyStatus, setIsButtonDisabled]);
 
-  const handlePropertyStatusSelect = (
-    status: "current_residence" | "moving_location"
-  ) => {
+  const handlePropertyStatusSelect = (status: PropertyStatus) => {
     updateFields({ propertyStatus: status });
   };
+
+  const cardData = [
+    {
+      icon: <HomeIcon />,
+      title: (
+        <>
+          現在の
+          <br className="sm:hidden" />
+          お住まい
+        </>
+      ),
+      type: PropertyStatus.CURRENT_RESIDENCE,
+    },
+    {
+      icon: <div className="w-[48px] h-[48px] bg-token-mono-100"></div>,
+      title: "引越し先",
+      type: PropertyStatus.MOVING_LOCATION,
+    },
+  ];
 
   return (
     <div className="w-full">
       <QuestionHeader question={<>どちらで電気を利用しますか？</>} />
 
-      <div className="mt-8 space-y-4">
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.propertyStatus === "current_residence"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handlePropertyStatusSelect("current_residence")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <Home className="h-6 w-6 text-white" />
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">現在のお住まい</p>
-            </div>
-          </div>
-        </Card>
-
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.propertyStatus === "moving_location"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handlePropertyStatusSelect("moving_location")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <MoveRight className="h-6 w-6 text-white" />
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">引越し先</p>
-            </div>
-          </div>
-        </Card>
-      </div>
+      <SelectCard
+        cardData={cardData}
+        handleTypeSelect={handlePropertyStatusSelect}
+        currentType={data.propertyStatus}
+      />
     </div>
   );
 };

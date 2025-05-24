@@ -1,24 +1,21 @@
 import { cn } from "@/lib/utils";
-import { EnergyType } from "@/types";
 
-type Type = EnergyType;
-
-interface SelectCardProps {
+interface SelectCardProps<T> {
   cardData: {
     icon: React.ReactNode;
     title: React.ReactNode;
-    type: Type;
+    type: T;
     isWhite?: boolean;
   }[];
-  currentType: Type | null;
-  handleEnergyTypeSelect: (type: Type) => void;
+  currentType: T | null;
+  handleTypeSelect: (type: T) => void;
 }
 
-export const SelectCard = ({
+export const SelectCard = <T,>({
   cardData,
-  handleEnergyTypeSelect,
+  handleTypeSelect,
   currentType,
-}: SelectCardProps) => {
+}: SelectCardProps<T>) => {
   return (
     <div className="mt-6 flex flex-wrap gap-[16px]">
       {cardData.map((item, idx) =>
@@ -31,7 +28,7 @@ export const SelectCard = ({
                 ? "bg-token-main-200 text-token-main-800 border-token-main-800"
                 : "hover:bg-token-main-100"
             )}
-            onClick={() => handleEnergyTypeSelect(item.type)}
+            onClick={() => handleTypeSelect(item.type)}
           >
             <div className="flex items-center justify-center gap-4">
               <div>{item.icon}</div>
@@ -58,7 +55,7 @@ export const SelectCard = ({
                 ? "bg-token-main-800"
                 : "hover:bg-token-main-500"
             )}
-            onClick={() => handleEnergyTypeSelect(item.type)}
+            onClick={() => handleTypeSelect(item.type)}
           >
             <div className="flex flex-col items-center justify-center gap-4">
               <div>{item.icon}</div>
