@@ -31,6 +31,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug Secrets
+        run: |
+          echo "Checking secrets configuration..."
+          if [ -n "${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" ]; then
+            echo "VITE_FIREBASE_FUNCTION_URL is set"
+          else
+            echo "VITE_FIREBASE_FUNCTION_URL is not set"
+          fi
+
       - name: Build
         run: |
           # Create empty .env file if it doesn't exist
