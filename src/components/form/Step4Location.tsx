@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { StepProps } from "../../types";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { QuestionHeader } from "./QuestionHeader";
+import { getAddress } from "jposta";
 
 const Step4Location = ({
   data,
@@ -66,13 +67,54 @@ const Step4Location = ({
     "沖縄県",
   ];
 
+  const [postalCodeError, setPostalCodeError] = useState<string | null>(null);
+
   useEffect(() => {
-    if (data.postalCode && data.prefecture && data.address) {
+    if (
+      data.postalCode &&
+      data.prefecture &&
+      data.address &&
+      postalCodeError === null
+    ) {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
     }
-  }, [data.postalCode, data.prefecture, data.address, setIsButtonDisabled]);
+  }, [
+    data.postalCode,
+    data.prefecture,
+    data.address,
+    setIsButtonDisabled,
+    postalCodeError,
+  ]);
+
+  // 郵便番号が入力されたとき
+  const handlePostalCodeChange = async (postalCode: string) => {
+    // 全角を半角に変換
+    function toHalfWidth(str: string) {
+      return str
+        .replace(/[！-～]/g, (s) =>
+          String.fromCharCode(s.charCodeAt(0) - 0xfee0)
+        )
+        .replace(/\u3000/g, " "); // 全角スペースも半角に！
+    }
+    const halfWidthPostalCode = toHalfWidth(postalCode);
+
+    updateFields({ postalCode: halfWidthPostalCode });
+    if (halfWidthPostalCode === "" || halfWidthPostalCode.length < 7) {
+      setPostalCodeError("");
+      return;
+    }
+
+    const address = await getAddress(halfWidthPostalCode);
+    if (!address) {
+      setPostalCodeError("郵便番号が正しくありません");
+      return;
+    }
+    setPostalCodeError(null);
+    const { pref, city, area } = address;
+    updateFields({ prefecture: pref, address: city + area });
+  };
 
   return (
     <div className="w-full">
@@ -88,8 +130,9 @@ const Step4Location = ({
             id="postalCode"
             placeholder="(例) 1234567"
             value={data.postalCode}
-            onChange={(e) => updateFields({ postalCode: e.target.value })}
+            onChange={(e) => handlePostalCodeChange(e.target.value)}
             required
+            error={postalCodeError ?? undefined}
           />
         </div>
 
