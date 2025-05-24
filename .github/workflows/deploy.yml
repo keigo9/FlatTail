@@ -37,7 +37,7 @@ jobs:
           touch .env
 
           # Add environment variables if they exist in secrets
-          if [ "${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" != "" ]; then
+          if [[ -n "${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" ]]; then
             echo "VITE_FIREBASE_FUNCTION_URL=${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" >> .env
           else
             echo "VITE_FIREBASE_FUNCTION_URL=http://localhost:5001/your-project/function-name" >> .env
