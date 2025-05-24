@@ -1,5 +1,15 @@
 # デプロイメントガイド
 
+## GitHub Pages デプロイ
+
+このプロジェクトは GitHub Pages を使用して自動的にデプロイされます。
+
+### 自動デプロイ
+
+`main`ブランチにプッシュすると、GitHub Actions を通じて自動的にビルドとデプロイが行われます。デプロイされたサイトは以下の URL で閲覧できます：
+
+https://keigo9.github.io/FlatTail/
+
 ## GitHub Actions の環境変数設定
 
 ### 1. Secrets の設定
