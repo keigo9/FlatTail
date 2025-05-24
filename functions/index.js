@@ -7,9 +7,10 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
+// Updated to use process.env for Cloud Run compatibility
 const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
-const functions = require("firebase-functions");
+// const functions = require("firebase-functions"); // No longer needed
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
@@ -38,17 +39,16 @@ exports.submitToKintone = onRequest(async (request, response) => {
       headers: request.headers,
     });
 
-    // 環境変数の取得
-    const config = functions.config();
-    logger.info("Config loaded", {
-      hasApiKey: !!config.kintone?.api_key,
-      hasDomain: !!config.kintone?.domain,
-      hasAppId: !!config.kintone?.app_id,
-    });
+    // 環境変数の取得（Cloud Run用に修正）
+    const API_KEY = process.env.KINTONE_API_KEY;
+    const DOMAIN = process.env.KINTONE_DOMAIN;
+    const APP_ID = process.env.KINTONE_APP_ID;
 
-    const API_KEY = config.kintone?.api_key;
-    const DOMAIN = config.kintone?.domain;
-    const APP_ID = config.kintone?.app_id;
+    logger.info("Environment variables loaded", {
+      hasApiKey: !!API_KEY,
+      hasDomain: !!DOMAIN,
+      hasAppId: !!APP_ID,
+    });
 
     // 環境変数のバリデーション
     if (!API_KEY || !DOMAIN || !APP_ID) {
