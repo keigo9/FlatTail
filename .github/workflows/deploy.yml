@@ -32,12 +32,16 @@ jobs:
         run: npm ci
 
       - name: Debug Secrets
+        env:
+          FIREBASE_FUNCTION_URL: ${{ secrets.VITE_FIREBASE_FUNCTION_URL }}
         run: |
           echo "Checking secrets configuration..."
-          if [ -n "${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" ]; then
-            echo "VITE_FIREBASE_FUNCTION_URL is set"
+          echo "Secret exists check: ${{ secrets.VITE_FIREBASE_FUNCTION_URL != '' }}"
+          echo "Environment variable check..."
+          if [ -n "$FIREBASE_FUNCTION_URL" ]; then
+            echo "FIREBASE_FUNCTION_URL is set in environment"
           else
-            echo "VITE_FIREBASE_FUNCTION_URL is not set"
+            echo "FIREBASE_FUNCTION_URL is empty in environment"
           fi
 
       - name: Build
