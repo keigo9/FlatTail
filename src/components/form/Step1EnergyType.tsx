@@ -64,6 +64,7 @@ const Step1EnergyType = ({
                 ? "text-token-main-800"
                 : "text-token-main-600"
             )}
+            size={32}
           />
         </>
       ),
