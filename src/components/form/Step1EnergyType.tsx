@@ -1,7 +1,11 @@
-import { StepProps } from "../../types";
-import { Card } from "../ui/card";
+import { EnergyType, StepProps } from "../../types";
 import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
+import { ClipIcon } from "@/assets/ClipIcon";
+import { RightIcon } from "@/assets/RightIcon";
+import { SelectCard } from "./SelectCard";
+import { GusIcon } from "@/assets/GusIcon";
+import { cn } from "@/lib/utils";
 
 const Step1EnergyType = ({
   data,
@@ -16,11 +20,58 @@ const Step1EnergyType = ({
     }
   }, [data.energyType, setIsButtonDisabled]);
 
-  const handleEnergyTypeSelect = (
-    type: "electric_and_city_gas" | "electric_and_propane_gas" | "all_electric"
-  ) => {
+  const handleEnergyTypeSelect = (type: EnergyType) => {
     updateFields({ energyType: type });
   };
+
+  const cardData = [
+    {
+      icon: (
+        <div className="flex items-center justify-center">
+          <RightIcon />
+          <ClipIcon />
+        </div>
+      ),
+      title: (
+        <>
+          電気 &amp;
+          <br className="sm:hidden" /> 都市ガス
+        </>
+      ),
+      type: EnergyType.ELECTRIC_AND_CITY_GAS,
+    },
+    {
+      icon: (
+        <div className="flex items-center justify-center">
+          <RightIcon />
+          <GusIcon />
+        </div>
+      ),
+      title: (
+        <>
+          電気 &amp;
+          <br className="sm:hidden" /> プロパンガス
+        </>
+      ),
+      type: EnergyType.ELECTRIC_AND_PROPANE_GAS,
+    },
+    {
+      icon: (
+        <>
+          <RightIcon
+            className={cn(
+              data.energyType === EnergyType.ALL_ELECTRIC
+                ? "text-token-main-800"
+                : "text-token-main-600"
+            )}
+          />
+        </>
+      ),
+      title: "オール電化",
+      type: EnergyType.ALL_ELECTRIC,
+      isWhite: true,
+    },
+  ];
 
   return (
     <div className="w-full">
@@ -34,97 +85,11 @@ const Step1EnergyType = ({
         }
       />
 
-      <div className="mt-8 space-y-4">
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.energyType === "electric_and_city_gas"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handleEnergyTypeSelect("electric_and_city_gas")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <svg
-                className="h-6 w-6 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">電気 &amp; 都市ガス</p>
-            </div>
-          </div>
-        </Card>
-
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.energyType === "electric_and_propane_gas"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handleEnergyTypeSelect("electric_and_propane_gas")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <svg
-                className="h-6 w-6 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">電気 &amp; プロパンガス</p>
-            </div>
-          </div>
-        </Card>
-
-        <Card
-          className={`p-6 cursor-pointer border-2 hover:border-orange-500 ${
-            data.energyType === "all_electric"
-              ? "border-orange-500 bg-orange-50"
-              : "border-gray-200"
-          }`}
-          onClick={() => handleEnergyTypeSelect("all_electric")}
-        >
-          <div className="flex items-center justify-center gap-4">
-            <div className="bg-orange-500 p-4 rounded-lg">
-              <svg
-                className="h-6 w-6 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-medium">オール電化</p>
-            </div>
-          </div>
-        </Card>
-      </div>
+      <SelectCard
+        cardData={cardData}
+        handleEnergyTypeSelect={handleEnergyTypeSelect}
+        currentType={data.energyType}
+      />
     </div>
   );
 };

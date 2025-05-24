@@ -1,9 +1,5 @@
 export interface FormData {
-  energyType:
-    | "electric_and_city_gas"
-    | "electric_and_propane_gas"
-    | "all_electric"
-    | null;
+  energyType: EnergyType | null;
 
   propertyType: "detached_house" | "apartment" | "store" | null;
 
@@ -26,4 +22,10 @@ export interface StepProps {
   data: FormData;
   updateFields: (fields: Partial<FormData>) => void;
   setIsButtonDisabled: (isDisabled: boolean) => void;
+}
+
+export enum EnergyType {
+  ELECTRIC_AND_CITY_GAS = "electric_and_city_gas",
+  ELECTRIC_AND_PROPANE_GAS = "electric_and_propane_gas",
+  ALL_ELECTRIC = "all_electric",
 }
