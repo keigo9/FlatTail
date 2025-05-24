@@ -1,5 +1,6 @@
 import { FormData } from "../types";
 
+const ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT ?? "development";
 const FIREBASE_FUNCTION_URL = import.meta.env.VITE_FIREBASE_FUNCTION_URL;
 
 interface KintoneResponse {
@@ -14,6 +15,13 @@ interface KintoneResponse {
 export const submitToKintone = async (
   formData: FormData
 ): Promise<{ success: boolean; message: string }> => {
+  if (ENVIRONMENT === "local") {
+    return {
+      success: true,
+      message: "デバッグモードでは送信できません",
+    };
+  }
+
   try {
     const response = await fetch(FIREBASE_FUNCTION_URL, {
       method: "POST",
