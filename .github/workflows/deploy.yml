@@ -41,13 +41,15 @@ jobs:
           fi
 
       - name: Build
+        env:
+          FIREBASE_FUNCTION_URL: ${{ secrets.VITE_FIREBASE_FUNCTION_URL }}
         run: |
           # Create empty .env file if it doesn't exist
           touch .env
 
           # Add environment variables if they exist in secrets
-          if [ "${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" != "" ]; then
-            echo "VITE_FIREBASE_FUNCTION_URL=${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" >> .env
+          if [ -n "$FIREBASE_FUNCTION_URL" ]; then
+            echo "VITE_FIREBASE_FUNCTION_URL=$FIREBASE_FUNCTION_URL" >> .env
           else
             echo "VITE_FIREBASE_FUNCTION_URL=http://localhost:5001/your-project/function-name" >> .env
           fi
