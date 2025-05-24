@@ -61,6 +61,8 @@ export default {
           "linear-gradient(47.29deg, #FFD825 5.08%, #FF9035 57.04%, #FF5721 100.09%)",
         "gradation-200":
           "linear-gradient(40.05deg, #FEB970 -0.92%, #FF6F21 45%, #FF5721 101.13%)",
+        "gradation-300":
+          "linear-gradient(47.29deg, #F7CB6B 5.08%, #FAB37A 57.04%, #FBA980 100.09%)",
       },
       keyframes: {
         "accordion-down": {

@@ -2,6 +2,7 @@ import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/assets/ArrowRightIcon";
 import { GlassIcon } from "@/assets/GlassIcon";
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface FixedButtonProps {
   onClick: () => void;
@@ -30,17 +31,20 @@ const FixedButton = ({
       <button
         onClick={onClick}
         disabled={disabled || isSubmitting}
-        className={`w-full max-w-[352px] h-[48px] rounded-full text-white font-bold flex flex-1 items-center justify-center
-          ${
-            disabled || isSubmitting
-              ? "bg-button-primary-disabled cursor-not-allowed"
-              : "bg-gradation-100 hover:opacity-90"
-          }`}
+        className={cn(
+          "w-full max-w-[352px] h-[48px] rounded-full text-white font-bold flex flex-1 items-center justify-center",
+          disabled
+            ? "bg-button-primary-disabled cursor-not-allowed"
+            : isSubmitting
+            ? "bg-gradation-200 cursor-not-allowed"
+            : "bg-gradation-100 hover:bg-gradation-300"
+        )}
       >
         <span
-          className={`flex items-center gap-2 px-4 w-full ${
+          className={cn(
+            "flex items-center gap-2 px-4 w-full",
             showArrowRightIcon ? "justify-between" : "justify-center"
-          }`}
+          )}
         >
           {showGlassIcon && <GlassIcon size={24} />}
           {showArrowRightIcon && <span />}
@@ -55,7 +59,7 @@ const FixedButton = ({
 const BackButton = ({ onClick }: { onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className="w-[40px] h-[40px] rounded-full border-2 border-token-main-600 flex items-center justify-center"
+    className="w-[40px] h-[40px] rounded-full border-2 border-token-main-600 flex items-center justify-center hover:bg-token-main-100"
   >
     <ArrowLeftIcon size={17} className="text-token-main-600" />
   </button>
