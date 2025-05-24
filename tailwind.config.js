@@ -23,7 +23,7 @@ export default {
           },
           critical: {
             100: "#FFE9E9",
-            200: "C82222",
+            200: "#C82222",
           },
           main: {
             100: "#FFE9D2",
@@ -63,6 +63,8 @@ export default {
           "linear-gradient(40.05deg, #FEB970 -0.92%, #FF6F21 45%, #FF5721 101.13%)",
         "gradation-300":
           "linear-gradient(47.29deg, #F7CB6B 5.08%, #FAB37A 57.04%, #FBA980 100.09%)",
+        "border-gradation":
+          "linear-gradient(256.69deg, #FFD825 -12.54%, #FC9F2C 7.07%, #FC8800 23.33%)",
       },
       keyframes: {
         "accordion-down": {
