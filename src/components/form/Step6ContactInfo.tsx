@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { StepProps } from "../../types";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { QuestionHeader } from "./QuestionHeader";
 
 const Step6ContactInfo = ({
   data,
@@ -18,14 +19,10 @@ const Step6ContactInfo = ({
 
   return (
     <div className="w-full">
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">
-          お客様の情報を入力してください
-        </h2>
-        <p className="text-sm text-gray-500 mt-2">
-          ※お客様の情報が一般に公開されることはありません
-        </p>
-      </div>
+      <QuestionHeader
+        question={<>ご連絡先を教えてください</>}
+        description="※お客様の情報が一般に公開されることはありません"
+      />
 
       <form className="mt-8 space-y-6">
         <div className="space-y-2">

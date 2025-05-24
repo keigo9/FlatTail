@@ -2,6 +2,7 @@ import { StepProps } from "../../types";
 import { Card } from "../ui/card";
 import { Home, Building2, Store } from "lucide-react";
 import { useEffect } from "react";
+import { QuestionHeader } from "./QuestionHeader";
 
 const Step2PropertyType = ({
   data,
@@ -24,13 +25,15 @@ const Step2PropertyType = ({
 
   return (
     <div className="w-full">
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">
-          電気の料金比較をしたい物件は
-          <br />
-          どちらですか？
-        </h2>
-      </div>
+      <QuestionHeader
+        question={
+          <>
+            電気の料金比較をしたい物件は
+            <br className="sm:hidden" />
+            どちらですか？
+          </>
+        }
+      />
 
       <div className="mt-8 space-y-4">
         <Card

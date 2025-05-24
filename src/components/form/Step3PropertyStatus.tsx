@@ -2,6 +2,7 @@ import { StepProps } from "../../types";
 import { Card } from "../ui/card";
 import { Home, MoveRight } from "lucide-react";
 import { useEffect } from "react";
+import { QuestionHeader } from "./QuestionHeader";
 
 const Step3PropertyStatus = ({
   data,
@@ -24,11 +25,7 @@ const Step3PropertyStatus = ({
 
   return (
     <div className="w-full">
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">
-          どちらで電気を利用しますか？
-        </h2>
-      </div>
+      <QuestionHeader question={<>どちらで電気を利用しますか？</>} />
 
       <div className="mt-8 space-y-4">
         <Card

@@ -125,7 +125,7 @@ const FormContainer = ({
       )}
       <div className="w-full max-w-2xl mx-auto">
         <ProgressBar currentStep={currentStep} totalSteps={6} />
-        <div className="mt-12 bg-white rounded-lg p-6">
+        <div className="mt-6 sm:mt-12 bg-white rounded-lg p-6">
           {steps[currentStep - 1]}
         </div>
       </div>

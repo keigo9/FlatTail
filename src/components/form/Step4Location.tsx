@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { QuestionHeader } from "./QuestionHeader";
 
 const Step4Location = ({
   data,
@@ -75,14 +76,10 @@ const Step4Location = ({
 
   return (
     <div className="w-full">
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">
-          電気の利用先住所を教えてください
-        </h2>
-        <p className="text-sm text-gray-500 mt-2">
-          ※お客様の情報が一般に公開されることはありません
-        </p>
-      </div>
+      <QuestionHeader
+        question={<>電気の利用先住所を教えてください</>}
+        description="※お客様の情報が一般に公開されることはありません"
+      />
 
       <form className="mt-8 space-y-6">
         <div className="space-y-2">

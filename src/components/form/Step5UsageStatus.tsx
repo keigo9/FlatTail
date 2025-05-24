@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { useEffect } from "react";
+import { QuestionHeader } from "./QuestionHeader";
 
 const Step5UsageStatus = ({
   data,
@@ -30,11 +31,10 @@ const Step5UsageStatus = ({
 
   return (
     <div className="w-full">
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">
-          現在の電気使用量を教えてください
-        </h2>
-      </div>
+      <QuestionHeader
+        question={<>電気の使用状況を教えてください</>}
+        description="※お客様の情報が一般に公開されることはありません"
+      />
 
       <form className="mt-8 space-y-6">
         <div className="space-y-2">

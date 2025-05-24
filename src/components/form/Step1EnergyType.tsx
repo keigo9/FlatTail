@@ -1,6 +1,7 @@
 import { StepProps } from "../../types";
 import { Card } from "../ui/card";
 import { useEffect } from "react";
+import { QuestionHeader } from "./QuestionHeader";
 
 const Step1EnergyType = ({
   data,
@@ -23,13 +24,15 @@ const Step1EnergyType = ({
 
   return (
     <div className="w-full">
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">
-          利用しているエネルギーは
-          <br />
-          どちらですか？
-        </h2>
-      </div>
+      <QuestionHeader
+        question={
+          <>
+            利用しているエネルギーは
+            <br className="sm:hidden" />
+            どちらですか？
+          </>
+        }
+      />
 
       <div className="mt-8 space-y-4">
         <Card
