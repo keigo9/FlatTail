@@ -69,6 +69,9 @@ jobs:
           # ビルド時の環境変数として直接設定することも可能
           VITE_FIREBASE_FUNCTION_URL: ${{ secrets.VITE_FIREBASE_FUNCTION_URL }}
 
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
