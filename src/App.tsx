@@ -20,7 +20,7 @@ function App() {
               !startDiagnosis ? (
                 <Main setStartDiagnosis={setStartDiagnosis} />
               ) : (
-                <div className="flex-1 py-10 px-4 bg-token-main-100 min-h-[calc(100vh-100px)]">
+                <div className="flex-1 py-10 px-4 bg-token-main-100 min-h-[calc(100vh-52px-80px)]">
                   <FormContainer setStartDiagnosis={setStartDiagnosis} />
                 </div>
               )
