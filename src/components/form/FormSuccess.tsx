@@ -36,7 +36,7 @@ const FormSuccess = () => {
             </svg>
           </div>
 
-          <h2 className="text-xl font-bold text-token-accent-200">診断完了</h2>
+          <h2 className="text-xl font-bold">診断完了</h2>
           <p>
             ご回答いただきありがとうございました。
             <br />
