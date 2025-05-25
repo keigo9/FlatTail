@@ -128,7 +128,7 @@ const FormContainer = ({
       {error && (
         <div className="p-3 bg-red-100 text-red-700 rounded-md">{error}</div>
       )}
-      <div className="w-full max-w-2xl mx-auto">
+      <div className="w-full max-w-2xl mx-auto pb-[80px]">
         <ProgressBar currentStep={currentStep} totalSteps={6} />
         <div className="mt-6 sm:mt-12 bg-white rounded-lg p-6">
           {steps[currentStep - 1]}
