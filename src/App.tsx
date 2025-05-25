@@ -6,6 +6,7 @@ import Main from "./components/lp/main";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermOfUse from "./TermOfUse";
 import { cn } from "./lib/utils";
+import NotFound from "./components/common/NotFound";
 
 function App() {
   const [startDiagnosis, setStartDiagnosis] = useState(false);
@@ -34,6 +35,7 @@ function App() {
           />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/term-of-use" element={<TermOfUse />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
