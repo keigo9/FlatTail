@@ -24,6 +24,7 @@ const INITIAL_DATA: FormData = {
   people: null,
   company: null,
   name: "",
+  nameKana: "",
   email: "",
   phone: "",
 };

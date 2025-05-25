@@ -22,8 +22,9 @@ export interface FormData {
 
   // step6
   name: string;
-  email: string;
+  nameKana: string;
   phone: string;
+  email: string;
 }
 
 export type FormStep = 1 | 2 | 3 | 4 | 5 | 6;
