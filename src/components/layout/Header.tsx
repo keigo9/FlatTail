@@ -1,5 +1,6 @@
 import { PhoneIcon } from "@/assets/PhoneIcon";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 const Header = ({
   setStartDiagnosis,
@@ -13,7 +14,12 @@ const Header = ({
 
   return (
     <>
-      <header className="w-full flex justify-between items-center py-2 px-4 h-[52px] fixed top-0 left-0 z-10 bg-token-mono-100">
+      <header
+        className={cn(
+          "w-full flex justify-between items-center py-2 px-4 fixed top-0 left-0 z-10 bg-token-mono-100",
+          `h-[var(--header-height-mobile)] sm:h-[var(--header-height-pc)]`
+        )}
+      >
         <div
           className="logo cursor-pointer"
           onClick={() => setStartDiagnosis(false)}
@@ -49,7 +55,9 @@ const Header = ({
           <span>電話で相談</span>
         </Button>
       </header>
-      <div className="h-[52px]"></div>
+      <div
+        className={`h-[var(--header-height-mobile)] sm:h-[var(--header-height-pc)]`}
+      ></div>
     </>
   );
 };

@@ -5,6 +5,7 @@ import FormContainer from "./components/form/FormContainer";
 import Main from "./components/lp/main";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermOfUse from "./TermOfUse";
+import { cn } from "./lib/utils";
 
 function App() {
   const [startDiagnosis, setStartDiagnosis] = useState(false);
@@ -20,7 +21,12 @@ function App() {
               !startDiagnosis ? (
                 <Main setStartDiagnosis={setStartDiagnosis} />
               ) : (
-                <div className="flex-1 py-10 px-4 bg-token-main-100 min-h-[calc(100vh-52px-80px)]">
+                <div
+                  className={cn(
+                    "flex-1 py-10 px-4 bg-token-main-100 ",
+                    `min-h-[calc(100vh-var(--header-height-mobile)-var(--footer-height))] sm:min-h-[calc(100vh-var(--header-height-pc)-var(--footer-height))]`
+                  )}
+                >
                   <FormContainer setStartDiagnosis={setStartDiagnosis} />
                 </div>
               )
