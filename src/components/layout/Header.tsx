@@ -1,12 +1,14 @@
 import { PhoneIcon } from "@/assets/PhoneIcon";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({
   setStartDiagnosis,
 }: {
   setStartDiagnosis: (startDiagnosis: boolean) => void;
 }) => {
+  const navigate = useNavigate();
   const PhoneNumber = "052-211-9290";
   const handlePhoneClick = () => {
     window.location.href = `tel:${PhoneNumber}`;
@@ -22,7 +24,10 @@ const Header = ({
       >
         <div
           className="logo cursor-pointer"
-          onClick={() => setStartDiagnosis(false)}
+          onClick={() => {
+            setStartDiagnosis(false);
+            navigate("/");
+          }}
         >
           <img
             src={`${import.meta.env.BASE_URL}logo.png`}
