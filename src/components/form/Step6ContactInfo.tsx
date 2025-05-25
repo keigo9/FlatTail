@@ -4,6 +4,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { QuestionHeader } from "./QuestionHeader";
 import { toHalfWidth } from "@/lib/stringUtil";
+import { cn } from "@/lib/utils";
 
 const Step6ContactInfo = ({
   data,
@@ -13,6 +14,7 @@ const Step6ContactInfo = ({
   const [emailError, setEmailError] = useState("");
   const [emailAgain, setEmailAgain] = useState("");
   const [emailAgainError, setEmailAgainError] = useState("");
+  const [isTermsChecked, setIsTermsChecked] = useState(false);
 
   function validateEmail(email: string) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -25,7 +27,8 @@ const Step6ContactInfo = ({
       data.phone &&
       data.email &&
       validateEmail(data.email) &&
-      emailAgain === data.email
+      emailAgain === data.email &&
+      isTermsChecked
     ) {
       setIsButtonDisabled(false);
     } else {
@@ -37,6 +40,7 @@ const Step6ContactInfo = ({
     data.phone,
     data.email,
     emailAgain,
+    isTermsChecked,
     setIsButtonDisabled,
   ]);
 
@@ -139,6 +143,58 @@ const Step6ContactInfo = ({
             required
             error={emailAgainError}
           />
+        </div>
+
+        <div className="flex items-center mt-10">
+          <label className="flex items-center cursor-pointer relative gap-2">
+            <div
+              className={cn(
+                "w-[15px] h-[15px] border-2 rounded-sm relative",
+                isTermsChecked
+                  ? "bg-gradation-100 border-none"
+                  : "border-token-mono-500 hover:border-token-main-500"
+              )}
+            >
+              <input
+                type="checkbox"
+                className="peer appearance-none"
+                onChange={(e) => {
+                  setIsTermsChecked(e.target.checked);
+                }}
+              />
+              <svg
+                className="absolute left-[50%] top-[calc(50%+1px)] translate-x-[-50%] translate-y-[-50%] w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="4"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <p className="text-[12px]">
+              <a
+                href="/FlatTail/term-of-use"
+                className="underline text-token-main-700"
+                target="_blank"
+              >
+                ご利用規約
+              </a>
+              <span>、</span>
+              <a
+                href="/FlatTail/privacy-policy"
+                className="underline text-token-main-700"
+                target="_blank"
+              >
+                プライバシーポリシー
+              </a>
+              <span>に同意します。</span>
+            </p>
+          </label>
         </div>
       </form>
     </div>
