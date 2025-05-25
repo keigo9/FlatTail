@@ -118,8 +118,10 @@ const Step4Location = ({
       />
 
       <form className="mt-8 space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="postalCode">郵便番号</Label>
+        <div className="space-y-2 sm:flex sm:items-center sm:justify-center sm:gap-4 sm:space-y-0">
+          <Label htmlFor="postalCode" className="sm:mb-0">
+            郵便番号
+          </Label>
           <Input
             id="postalCode"
             placeholder="(例) 1234567"
@@ -127,37 +129,45 @@ const Step4Location = ({
             onChange={(e) => handlePostalCodeChange(e.target.value)}
             required
             error={postalCodeError ?? undefined}
+            className="w-full sm:w-[286px]"
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="prefecture">都道府県</Label>
-          <Select
-            value={data.prefecture}
-            onValueChange={(value) => updateFields({ prefecture: value })}
-            required
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="選択してください" />
-            </SelectTrigger>
-            <SelectContent>
-              {prefectures.map((prefecture) => (
-                <SelectItem key={prefecture} value={prefecture}>
-                  {prefecture}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+        <div className="space-y-2 sm:flex sm:items-center sm:justify-center sm:gap-4 sm:space-y-0">
+          <Label htmlFor="prefecture" className="sm:mb-0">
+            都道府県
+          </Label>
+          <div className="w-full sm:w-[286px]">
+            <Select
+              value={data.prefecture}
+              onValueChange={(value) => updateFields({ prefecture: value })}
+              required
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="選択してください" />
+              </SelectTrigger>
+              <SelectContent>
+                {prefectures.map((prefecture) => (
+                  <SelectItem key={prefecture} value={prefecture}>
+                    {prefecture}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="address">住所</Label>
+        <div className="space-y-2 sm:flex sm:items-center sm:justify-center sm:gap-4 sm:space-y-0">
+          <Label htmlFor="address" className="sm:mb-0 sm:mr-[30px]">
+            住所
+          </Label>
           <Input
             id="address"
             placeholder="(例) 名古屋市中区"
             value={data.address}
             onChange={(e) => updateFields({ address: e.target.value })}
             required
+            className="w-full sm:w-[286px]"
           />
         </div>
       </form>

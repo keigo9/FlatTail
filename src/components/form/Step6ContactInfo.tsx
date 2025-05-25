@@ -52,8 +52,8 @@ const Step6ContactInfo = ({
         description="※お客様の情報が一般に公開されることはありません"
       />
 
-      <form className="mt-8 space-y-6">
-        <div className="space-y-2">
+      <form className="mt-8 space-y-6 sm:flex sm:flex-wrap sm:items-center sm:gap-4 sm:space-y-0">
+        <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
           <Label htmlFor="name">お名前</Label>
           <Input
             id="name"
@@ -64,7 +64,7 @@ const Step6ContactInfo = ({
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
           <Label htmlFor="nameKana">ふりがな</Label>
           <Input
             id="nameKana"
@@ -75,7 +75,7 @@ const Step6ContactInfo = ({
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
           <Label htmlFor="phone">電話番号</Label>
           <Input
             id="phone"
@@ -91,7 +91,7 @@ const Step6ContactInfo = ({
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
           <Label htmlFor="email">メールアドレス</Label>
           <Input
             id="email"
@@ -119,7 +119,7 @@ const Step6ContactInfo = ({
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
           <Label htmlFor="emailAgain">メールアドレス再入力</Label>
           <Input
             id="emailAgain"
@@ -146,8 +146,8 @@ const Step6ContactInfo = ({
           />
         </div>
 
-        <div className="flex items-center mt-10">
-          <label className="flex items-center cursor-pointer relative gap-2">
+        <div className="flex items-center sm:w-full sm:justify-center">
+          <label className="flex items-center cursor-pointer relative gap-2 mt-4 sm:mt-8">
             <div
               className={cn(
                 "w-[15px] h-[15px] border-2 rounded-sm relative",
