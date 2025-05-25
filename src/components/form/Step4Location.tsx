@@ -11,6 +11,7 @@ import {
 } from "../ui/select";
 import { QuestionHeader } from "./QuestionHeader";
 import { getAddress } from "jposta";
+import { toHalfWidth } from "@/lib/stringUtil";
 
 const Step4Location = ({
   data,
@@ -91,13 +92,6 @@ const Step4Location = ({
   // 郵便番号が入力されたとき
   const handlePostalCodeChange = async (postalCode: string) => {
     // 全角を半角に変換
-    function toHalfWidth(str: string) {
-      return str
-        .replace(/[！-～]/g, (s) =>
-          String.fromCharCode(s.charCodeAt(0) - 0xfee0)
-        )
-        .replace(/\u3000/g, " "); // 全角スペースも半角に！
-    }
     const halfWidthPostalCode = toHalfWidth(postalCode);
 
     updateFields({ postalCode: halfWidthPostalCode });

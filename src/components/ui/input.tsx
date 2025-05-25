@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { AlertTriangle } from "lucide-react";
 
 interface InputProps extends React.ComponentProps<"input"> {
-  error?: string;
+  error?: string | boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -15,7 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             type={type}
             className={cn(
-              "peer flex h-9 w-full rounded-sm border border-token-mono-400 px-3 py-1 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-950 placeholder-token-mono-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-token-mono-300 md:text-sm",
+              "peer flex h-9 w-full rounded-sm border border-token-mono-400 px-3 py-1 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-zinc-950 placeholder-token-mono-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-token-mono-300 md:text-sm text-[14px]",
               className
             )}
             ref={ref}
@@ -30,7 +30,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             )}
           ></span>
         </div>
-        {error && (
+        {typeof error === "string" && error !== "" && (
           <div className="flex items-center gap-1 mt-1">
             <AlertTriangle className="w-4 h-4 text-token-critical-200" />
             <p className="text-token-critical-200 text-sm">{error}</p>

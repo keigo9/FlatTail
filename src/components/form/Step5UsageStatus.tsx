@@ -7,27 +7,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { QuestionHeader } from "./QuestionHeader";
+import { Input } from "../ui/input";
+import { toHalfWidth } from "@/lib/stringUtil";
 
 const Step5UsageStatus = ({
   data,
   updateFields,
   setIsButtonDisabled,
 }: StepProps) => {
-  const usageOptions = [
-    { value: "low", label: "少ない (月に5,000円以下)" },
-    { value: "medium", label: "普通 (月に5,000円〜10,000円)" },
-    { value: "high", label: "多い (月に10,000円以上)" },
-  ];
+  const monthArray = Array.from({ length: 12 }, (_, i) => i + 1);
+  const [isEditing, setIsEditing] = useState(false);
+  const [priceError, setPriceError] = useState(false);
 
   useEffect(() => {
-    if (data.usageStatus) {
-      setIsButtonDisabled(false);
-    } else {
-      setIsButtonDisabled(true);
-    }
-  }, [data.usageStatus, setIsButtonDisabled]);
+    setIsButtonDisabled(false);
+  }, [setIsButtonDisabled]);
 
   return (
     <div className="w-full">
@@ -36,25 +32,144 @@ const Step5UsageStatus = ({
         description="※お客様の情報が一般に公開されることはありません"
       />
 
-      <form className="mt-8 space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="usageStatus">電気使用量</Label>
-          <Select
-            value={data.usageStatus}
-            onValueChange={(value) => updateFields({ usageStatus: value })}
-            required
+      <form className="mt-8 space-y-6 md:ml-[50px]">
+        <div className="space-y-2 sm:space-y-0 sm:flex sm:gap-6">
+          <Label
+            htmlFor="electricityBilling"
+            isOptional
+            className="sm:mb-0 sm:gap-[21px]"
           >
-            <SelectTrigger>
-              <SelectValue placeholder="選択してください" />
-            </SelectTrigger>
-            <SelectContent>
-              {usageOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+            電気料金
+          </Label>
+          <div className="flex items-center justify-between sm:justify-start sm:gap-6">
+            <div className="flex items-center gap-2">
+              <div className="w-[68px]">
+                <Select
+                  value={data.month ? String(data.month) : ""}
+                  onValueChange={(value) =>
+                    updateFields({ month: Number(value) })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="--" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {monthArray.map((month) => (
+                      <SelectItem key={month} value={String(month)}>
+                        {month}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <p className="text-[14px] font-bold">月</p>
+              <p className="text-[12px] font-bold">の電気料金が</p>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <p className="text-[14px] font-bold">約</p>
+                <div className="w-[78px]">
+                  <Input
+                    id="electricityBill"
+                    placeholder="---"
+                    value={
+                      isEditing
+                        ? data.electricityBill?.replace(/,/g, "") ?? ""
+                        : data.electricityBill
+                        ? Number(
+                            data.electricityBill.replace(/,/g, "")
+                          ).toLocaleString()
+                        : ""
+                    }
+                    onFocus={() => setIsEditing(true)}
+                    onBlur={() => setIsEditing(false)}
+                    onChange={(e) => {
+                      const raw = toHalfWidth(e.target.value.replace(/,/g, ""));
+                      if (Number.isNaN(Number(raw))) {
+                        setPriceError(true);
+                        updateFields({ electricityBill: "" });
+                      } else {
+                        setPriceError(false);
+                        updateFields({ electricityBill: raw });
+                      }
+                    }}
+                    required
+                    type="text"
+                    error={priceError}
+                  />
+                </div>
+                <p className="text-[14px] font-bold">円</p>
+              </div>
+              {priceError && (
+                <p className="text-xs text-red-500">{priceError}</p>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <div className="flex items-center justify-between sm:justify-start sm:gap-6">
+            <div className="sm:flex sm:gap-6">
+              <Label
+                htmlFor="usage"
+                isOptional
+                className="sm:mb-0 sm:gap-[35px]"
+              >
+                使用量
+              </Label>
+              <div className="flex items-center gap-2">
+                <div className="w-[78px]">
+                  <Input
+                    id="usage"
+                    placeholder="---"
+                    value={data.usage ? String(data.usage) : ""}
+                    onChange={(e) =>
+                      updateFields({ usage: Number(e.target.value) })
+                    }
+                    required
+                    type="number"
+                  />
+                </div>
+                <p className="text-[14px] font-bold">kwh</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-[12px] font-medium text-token-mono-500 mt-[32px] sm:mt-0">
+                または
+              </p>
+            </div>
+            <div className="sm:flex sm:gap-6">
+              <Label htmlFor="people" isOptional className="sm:mb-0 sm:gap-4">
+                世帯人数
+              </Label>
+              <div className="flex items-center gap-2">
+                <div className="w-[78px]">
+                  <Input
+                    id="people"
+                    placeholder="---"
+                    value={data.people ? String(data.people) : ""}
+                    onChange={(e) =>
+                      updateFields({ people: Number(e.target.value) })
+                    }
+                    required
+                    type="number"
+                  />
+                </div>
+                <p className="text-[14px] font-bold">人</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2 sm:space-y-0 sm:flex sm:gap-6">
+          <Label htmlFor="company" isOptional className="sm:mb-0 sm:gap-[8px]">
+            電力会社名
+          </Label>
+          <Input
+            id="company"
+            placeholder="(例) 株式会社フラットTAIL"
+            value={data.company ?? ""}
+            onChange={(e) => updateFields({ company: e.target.value })}
+            className="sm:w-[248px]"
+          />
         </div>
       </form>
     </div>

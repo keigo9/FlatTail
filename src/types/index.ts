@@ -1,16 +1,26 @@
 export interface FormData {
+  // step1
   energyType: EnergyType | null;
 
+  // step2
   propertyType: PropertyType | null;
 
+  // step3
   propertyStatus: PropertyStatus | null;
 
+  // step4
   postalCode: string;
   prefecture: string;
   address: string;
 
-  usageStatus: string;
+  // step5
+  month: number | null;
+  electricityBill: string | null;
+  usage: number | null;
+  people: number | null;
+  company: string | null;
 
+  // step6
   name: string;
   email: string;
   phone: string;
