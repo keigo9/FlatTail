@@ -23,7 +23,7 @@ function App() {
               ) : (
                 <div
                   className={cn(
-                    "flex-1 py-10 px-4 bg-token-main-100 ",
+                    "flex-1 py-10 px-4 bg-token-main-100",
                     `min-h-[calc(100vh-var(--header-height-mobile)-var(--footer-height))] sm:min-h-[calc(100vh-var(--header-height-pc)-var(--footer-height))]`
                   )}
                 >
