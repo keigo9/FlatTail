@@ -20,9 +20,21 @@ const logger = require("firebase-functions/logger");
 //   response.send("Hello from Firebase!");
 // });
 
+const allowedOrigins = [
+  // "http://localhost:5173", // ローカルでの開発時に使用
+  "https://keigo9.github.io", // テスト環境
+  // "https://keigo9.github.io", // 本番環境
+];
+
 exports.submitToKintone = onRequest(async (request, response) => {
   // CORSヘッダーの設定
-  response.set("Access-Control-Allow-Origin", "*");
+  const origin = request.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    response.set("Access-Control-Allow-Origin", origin);
+  } else {
+    response.set("Access-Control-Allow-Origin", "null");
+  }
   response.set("Access-Control-Allow-Methods", "POST, OPTIONS");
   response.set("Access-Control-Allow-Headers", "Content-Type");
 
@@ -68,20 +80,45 @@ exports.submitToKintone = onRequest(async (request, response) => {
 
     // 必須フィールドのバリデーション
     if (
+      !formData.energyType ||
+      !formData.propertyType ||
+      !formData.propertyStatus ||
+      !formData.postalCode ||
+      !formData.prefecture ||
+      !formData.address ||
       !formData.name ||
-      !formData.email ||
+      !formData.nameKana ||
       !formData.phone ||
-      !formData.postalCode
+      !formData.email
     ) {
       logger.warn("Missing required fields", { formData });
       throw new Error("必須フィールドが不足しています");
     }
 
+    // todo: formDataをKintoneのカラムに合わせて変換する
     const record = {
-      お客様名: { value: formData.name },
-      メールアドレス: { value: formData.email },
-      電話番号: { value: formData.phone },
+      // step1
+      ガスオール電化: { value: formData.energyType },
+      // step2
+      比較物件: { value: formData.propertyType },
+      // step3
+      利用先: { value: formData.propertyStatus },
+      // step4
       郵便番号: { value: formData.postalCode },
+      都道府県: { value: formData.prefecture },
+      それ以降の住所: { value: formData.address },
+      // step5
+      利用月: { value: formData.month }, // Optional
+      電気代: { value: formData.electricityBill }, // Optional
+      使用量: { value: formData.usage }, // Optional
+      世帯人数: { value: formData.people }, // Optional
+      使用電力会社: { value: formData.company }, // Optional
+      // step6
+      お客様名: { value: formData.name },
+      ふりがな: { value: formData.nameKana },
+      電話番号: { value: formData.phone },
+      メールアドレス: { value: formData.email },
+
       文字列__複数行_: { value: "API連携テスト送信" },
     };
 
