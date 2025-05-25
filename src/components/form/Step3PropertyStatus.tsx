@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
 import { HomeIcon } from "@/assets/HomeIcon";
 import { SelectCard } from "./SelectCard";
+import House2Icon from "@/assets/House2Icon";
 
 const Step3PropertyStatus = ({
   data,
@@ -34,7 +35,7 @@ const Step3PropertyStatus = ({
       type: PropertyStatus.CURRENT_RESIDENCE,
     },
     {
-      icon: <div className="w-[48px] h-[48px] bg-token-mono-100"></div>,
+      icon: <House2Icon />,
       title: "引越し先",
       type: PropertyStatus.MOVING_LOCATION,
     },
