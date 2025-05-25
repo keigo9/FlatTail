@@ -5,6 +5,7 @@ import { Label } from "../ui/label";
 import { QuestionHeader } from "./QuestionHeader";
 import { toHalfWidth } from "@/lib/stringUtil";
 import { cn } from "@/lib/utils";
+import { ScrollDownButton } from "../common/ScrollDownButton";
 
 const Step6ContactInfo = ({
   data,
@@ -197,6 +198,8 @@ const Step6ContactInfo = ({
           </label>
         </div>
       </form>
+
+      <ScrollDownButton />
     </div>
   );
 };
