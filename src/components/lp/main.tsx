@@ -1,3 +1,4 @@
+import { CheckIcon } from "@/assets/CheckIcon";
 import FixedButton from "../common/FixedButton";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -414,37 +415,113 @@ export default function Main({
           </div>
         </div>
       </section>
-      <section className="bg-token-main-100 py-10">
+      <section className="bg-token-main-100">
         <div
-          className="relative w-full flex flex-col items-center justify-center"
+          className="relative w-full flex flex-col items-center justify-center max-w-[1000px] mx-auto"
           style={{
             backgroundImage: `url(${import.meta.env.BASE_URL}LP/bg.png)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <h2 className="text-center text-token-mono-700 font-bold text-[28px] mb-2">
-            <span className="block text-[36px] text-transparent bg-gradation-200 bg-clip-text leading-tight">
-              ご自宅で
-            </span>
-            <br />
-            <span className="block text-[36px] text-transparent bg-gradation-200 bg-clip-text leading-tight">
-              補助金活用診断を
-              <br />
-              受けると
-            </span>
-          </h2>
-          <img
-            src={`${import.meta.env.BASE_URL}LP/amazon.png`}
-            alt="Amazonギフト券プレゼント"
-            className="max-w-[420px] w-full h-auto drop-shadow-lg"
-          />
+          <div className="px-4 pt-8">
+            <h2 className="text-center font-bold mb-2">
+              <span className="block text-[20px] text-token-mono-700 flex justify-center">
+                <svg width="100" height="28" viewBox="0 0 100 28">
+                  <text
+                    x="50"
+                    y="22"
+                    fontSize="20"
+                    fontWeight="bold"
+                    stroke="#fff"
+                    strokeWidth="6"
+                    paintOrder="stroke"
+                    fill="#191C1D"
+                    textAnchor="middle"
+                    style={{ fontFamily: "Noto Sans JP, sans-serif" }}
+                  >
+                    ご自宅で
+                  </text>
+                </svg>
+              </span>
+              <span className="block text-[32px] flex flex-col items-center">
+                <svg width="260" height="40" viewBox="0 0 260 40">
+                  <defs>
+                    <linearGradient
+                      id="lp-diagnosis-title-gradation-svg"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="0"
+                    >
+                      <stop offset="0%" stopColor="#FEB970" />
+                      <stop offset="34%" stopColor="#FF6F21" />
+                      <stop offset="78%" stopColor="#FF5721" />
+                    </linearGradient>
+                  </defs>
+                  <text
+                    x="130"
+                    y="32"
+                    fontSize="32"
+                    fontWeight="bold"
+                    stroke="#fff"
+                    strokeWidth="6"
+                    paintOrder="stroke"
+                    fill="url(#lp-diagnosis-title-gradation-svg)"
+                    textAnchor="middle"
+                    style={{ fontFamily: "Noto Sans JP, sans-serif" }}
+                  >
+                    補助金活用診断を
+                  </text>
+                </svg>
+                <svg width="140" height="40" viewBox="0 0 140 40">
+                  <text
+                    x="70"
+                    y="32"
+                    fontSize="32"
+                    fontWeight="bold"
+                    stroke="#fff"
+                    strokeWidth="6"
+                    paintOrder="stroke"
+                    fill="url(#lp-diagnosis-title-gradation-svg)"
+                    textAnchor="middle"
+                    style={{ fontFamily: "Noto Sans JP, sans-serif" }}
+                  >
+                    受けると
+                  </text>
+                </svg>
+              </span>
+            </h2>
+            <img
+              src={`${import.meta.env.BASE_URL}LP/amazon.png`}
+              alt="Amazonギフト券プレゼント"
+              className="max-w-[420px] w-full h-auto"
+            />
+          </div>
         </div>
-        <p className="text-center text-token-mono-700 text-[16px] mt-6">
-          この機会に専門スタッフがご自宅に伺い、お客様にぴったりのプランをご提案させていただきます。
-          <br />
-          おうちのこと、何でもお気軽にご相談ください。
-        </p>
+        <div className="px-4 pb-8">
+          <div className="flex justify-center gap-4 lg:gap-8 mt-4">
+            <div className="flex gap-2">
+              <CheckIcon />
+              <p className="text-token-mono-700 text-[12px] font-bold lg:text-[14px] relative top-[-2px]">
+                面倒な外出不要
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <CheckIcon />
+              <p className="text-token-mono-700 text-[12px] font-bold lg:text-[14px] relative top-[-5px]">
+                Amazonギフト券1万円分で
+                <br />
+                お好きなものを購入できる！
+              </p>
+            </div>
+          </div>
+          <p className="text-token-mono-700 text-[16px] font-medium mt-4 lg:text-center">
+            この機会に専門スタッフがご自宅に伺い、お客様にぴったりのプランをご提案させていただきます。
+            <br className="hidden lg:block" />
+            おうちのこと、何でもお気軽にご相談ください。
+          </p>
+        </div>
       </section>
       <FixedButton onClick={() => setStartDiagnosis(true)} showGlassIcon>
         診断スタート
