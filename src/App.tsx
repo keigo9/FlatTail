@@ -25,7 +25,7 @@ function App() {
                 <div
                   className={cn(
                     "flex-1 py-10 px-4 bg-token-main-100",
-                    `min-h-[calc(100vh-var(--header-height-mobile)-var(--footer-height))] sm:min-h-[calc(100vh-var(--header-height-pc)-var(--footer-height))]`
+                    `min-h-[calc(100dvh-var(--header-height-mobile)-var(--footer-height))] sm:min-h-[calc(100dvh-var(--header-height-pc)-var(--footer-height))]`
                   )}
                 >
                   <FormContainer setStartDiagnosis={setStartDiagnosis} />
