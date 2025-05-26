@@ -39,7 +39,6 @@ const FormContainer = ({
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
-  console.log(isComplete);
   const [error, setError] = useState<string | null>(null);
 
   const updateFields = (fields: Partial<FormData>) => {
@@ -81,7 +80,9 @@ const FormContainer = ({
     }
   };
 
-  return <FormSuccess />;
+  if (isComplete) {
+    return <FormSuccess />;
+  }
 
   const steps = [
     <Step1EnergyType
