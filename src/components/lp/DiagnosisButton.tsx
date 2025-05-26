@@ -1,6 +1,6 @@
 export const DiagnosisButton = () => {
   return (
-    <div className="animate-floating-y fixed px-[12px] py-[8px] left-1/2 bottom-[95px] -translate-x-1/2 z-50 bg-token-accent-200 text-white rounded-full flex items-end transition-all shadow-lg sm:px-[37.5px] whitespace-nowrap">
+    <div className="animate-floating-y fixed px-[12px] py-[8px] left-1/2 bottom-[95px] -translate-x-1/2 z-[40] bg-token-accent-200 text-white rounded-full flex items-end transition-all shadow-lg sm:px-[37.5px] whitespace-nowrap">
       <span className="text-[14px] font-medium tracking-[0.28px]">たった</span>
       <span className="text-[18px] font-bold tracking-[0.36px] leading-[25px]">
         1分
