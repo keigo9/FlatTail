@@ -346,6 +346,101 @@ export default function Main({
           </span>
         </p>
       </section>
+      <section className="bg-gradation-200 px-4 py-8">
+        <div className="max-w-[1200px] mx-auto bg-token-mono-100 rounded-md px-4 py-8">
+          <h2 className="text-center font-bold text-[28px] text-token-main-600 mb-2">
+            フラットTAILの
+            <span className="block text-[36px] text-transparent bg-gradation-200 bg-clip-text leading-tight">
+              特徴
+            </span>
+          </h2>
+          <div className="flex flex-col gap-8 mt-8">
+            {[
+              {
+                img: `${import.meta.env.BASE_URL}LP/feat1.png`,
+                tags: ["愛知県", "三重県", "岐阜県"],
+                title: "特化したサービス提供",
+                desc: "地域に特化した知識と経験が豊富なため、専門的な対応することができます。",
+              },
+              {
+                img: `${import.meta.env.BASE_URL}LP/feat2.png`,
+                tags: ["現金", "カードローン", "借り換え"],
+                title: "豊富な支払い方法",
+                desc: "支払い方法が豊富なため、導入の障壁が低く、ご家族の同意も得られやすいです。",
+              },
+              {
+                img: `${import.meta.env.BASE_URL}LP/feat3.png`,
+                tags: ["外壁", "外構", "エクステリア"],
+                title: "総合的なサービスを提供",
+                desc: "地域特化で他の工事業者さまとも繋がりがあるため、総合的なサポートをすることができます。",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col sm:flex-row items-center gap-6 bg-token-main-100 rounded-lg p-6 shadow-sm"
+              >
+                <div className="flex-shrink-0 mb-4 sm:mb-0">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-[90px] h-[90px] object-contain"
+                  />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {item.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="bg-token-main-200 text-token-main-600 rounded-full px-3 py-1 text-[15px] font-bold"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="font-bold text-[20px] mb-1 text-token-mono-700">
+                    {item.title}
+                  </div>
+                  <div className="text-[16px] text-token-mono-700">
+                    {item.desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="bg-token-main-100 py-10">
+        <div
+          className="relative w-full flex flex-col items-center justify-center"
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}LP/bg.png)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <h2 className="text-center text-token-mono-700 font-bold text-[28px] mb-2">
+            <span className="block text-[36px] text-transparent bg-gradation-200 bg-clip-text leading-tight">
+              ご自宅で
+            </span>
+            <br />
+            <span className="block text-[36px] text-transparent bg-gradation-200 bg-clip-text leading-tight">
+              補助金活用診断を
+              <br />
+              受けると
+            </span>
+          </h2>
+          <img
+            src={`${import.meta.env.BASE_URL}LP/amazon.png`}
+            alt="Amazonギフト券プレゼント"
+            className="max-w-[420px] w-full h-auto drop-shadow-lg"
+          />
+        </div>
+        <p className="text-center text-token-mono-700 text-[16px] mt-6">
+          この機会に専門スタッフがご自宅に伺い、お客様にぴったりのプランをご提案させていただきます。
+          <br />
+          おうちのこと、何でもお気軽にご相談ください。
+        </p>
+      </section>
       <FixedButton onClick={() => setStartDiagnosis(true)} showGlassIcon>
         診断スタート
       </FixedButton>
