@@ -41,4 +41,22 @@
       -2px -2px 0 #fff, 0px 2px 0 #fff, 2px 0px 0 #fff, 0px -2px 0 #fff,
       -2px 0px 0 #fff;
   }
+  .text-stroke-white-6 {
+    -webkit-text-stroke: 6px #fff;
+    paint-order: stroke;
+  }
+  .text-stroke-white-8 {
+    -webkit-text-stroke: 8px #fff;
+    paint-order: stroke;
+  }
+  .text-stroke-gradation-white-6 {
+    color: #fff;
+    -webkit-text-stroke: 6px #fff;
+    paint-order: stroke;
+  }
+  .text-stroke-gradation-white-8 {
+    color: #fff;
+    -webkit-text-stroke: 8px #fff;
+    paint-order: stroke;
+  }
 }

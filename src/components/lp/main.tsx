@@ -99,49 +99,17 @@ export default function Main({
       </section>
       <section className="bg-token-main-100 py-6">
         <h2 className="text-center text-token-mono-700 font-bold mb-6">
-          <span className="relative inline-block align-middle">
-            <svg width="150" height="26" viewBox="0 0 150 26">
-              <text
-                x="75"
-                y="20"
-                fontSize="20"
-                fontWeight="bold"
-                stroke="#fff"
-                strokeWidth="6"
-                paintOrder="stroke"
-                fill="#191C1D"
-                textAnchor="middle"
-                style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-              >
-                フラットTAILが
-              </text>
-            </svg>
+          <span className="text-[20px] font-bold text-token-mono-700 z-10 relative text-stroke-white-8">
+            フラットTAILが
           </span>
           <br />
           <span className="relative inline-block">
-            <svg width="200" height="40" viewBox="0 0 200 40">
-              <defs>
-                <linearGradient id="orange-grad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#FEB970" />
-                  <stop offset="50%" stopColor="#FF6F21" />
-                  <stop offset="100%" stopColor="#FF5721" />
-                </linearGradient>
-              </defs>
-              <text
-                x="100"
-                y="32"
-                fontSize="32"
-                fontWeight="bold"
-                stroke="#fff"
-                strokeWidth="6"
-                paintOrder="stroke"
-                fill="url(#orange-grad)"
-                textAnchor="middle"
-                style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-              >
-                選ばれる理由
-              </text>
-            </svg>
+            <span className="text-[32px] font-black bg-lp-reason-title-gradation bg-clip-text text-transparent z-10 relative leading-[29px]">
+              選ばれる理由
+            </span>
+            <span className="text-[32px] absolute top-0 left-0 text-stroke-gradation-white-8 leading-[29px]">
+              選ばれる理由
+            </span>
           </span>
         </h2>
         <div className="flex flex-col sm:flex-row gap-8 items-center max-w-[1200px] mx-auto lg:px-4 lg:gap-4">
@@ -241,109 +209,27 @@ export default function Main({
           ))}
         </div>
         <p className="flex flex-wrap items-center justify-center mt-6">
-          <span
-            className="relative inline-block align-middle"
-            style={{ lineHeight: 1 }}
-          >
-            <svg
-              width="48"
-              height="32"
-              viewBox="0 0 48 32"
-              style={{ display: "block" }}
-            >
-              <text
-                x="0"
-                y="24"
-                fontSize="24"
-                fontWeight="bold"
-                stroke="#fff"
-                strokeWidth="8"
-                paintOrder="stroke"
-                fill="#FF6F21"
-                textAnchor="start"
-                style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-              >
-                安心
-              </text>
-            </svg>
+          <span className="relative inline-block">
+            <span className="text-[24px] font-black bg-lp-reason-title-gradation bg-clip-text text-transparent z-10 relative">
+              安心
+            </span>
+            <span className="text-[24px] absolute top-0 left-0 text-stroke-gradation-white-6">
+              安心
+            </span>
           </span>
-          <span
-            className="relative inline-block align-middle"
-            style={{ lineHeight: 1 }}
-          >
-            <svg
-              width="32"
-              height="24"
-              viewBox="0 0 32 24"
-              style={{ display: "block" }}
-            >
-              <text
-                x="0"
-                y="18"
-                fontSize="16"
-                fontWeight="bold"
-                stroke="#fff"
-                strokeWidth="6"
-                paintOrder="stroke"
-                fill="#191C1D"
-                textAnchor="start"
-                style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-              >
-                して
-              </text>
-            </svg>
+          <span className="text-[16px] font-bold text-token-mono-700 z-10 relative text-stroke-white-6">
+            して
           </span>
-          <span
-            className="relative inline-block align-middle"
-            style={{ lineHeight: 1 }}
-          >
-            <svg
-              width="50"
-              height="32"
-              viewBox="0 0 50 32"
-              style={{ display: "block" }}
-            >
-              <text
-                x="0"
-                y="24"
-                fontSize="24"
-                fontWeight="bold"
-                stroke="#fff"
-                strokeWidth="8"
-                paintOrder="stroke"
-                fill="#FF6F21"
-                textAnchor="start"
-                style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-              >
-                導入
-              </text>
-            </svg>
+          <span className="relative inline-block">
+            <span className="text-[24px] font-black bg-lp-reason-title-gradation bg-clip-text text-transparent z-10 relative">
+              導入
+            </span>
+            <span className="text-[24px] absolute top-0 left-0 text-stroke-gradation-white-6">
+              導入
+            </span>
           </span>
-          <span
-            className="relative inline-block align-middle relative left-[-2px]"
-            style={{ lineHeight: 1 }}
-          >
-            <svg
-              width="140"
-              height="24"
-              viewBox="0 0 140 24"
-              style={{ display: "block" }}
-            >
-              <text
-                x="0"
-                y="18"
-                fontSize="16"
-                fontWeight="bold"
-                stroke="#fff"
-                strokeWidth="6"
-                paintOrder="stroke"
-                fill="#191C1D"
-                textAnchor="start"
-                style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-              >
-                していただけます！
-              </text>
-            </svg>
+          <span className="text-[16px] font-bold text-token-mono-700 z-10 relative text-stroke-white-6">
+            していただけます！
           </span>
         </p>
       </section>
@@ -426,70 +312,20 @@ export default function Main({
         >
           <div className="px-4 pt-8">
             <h2 className="text-center font-bold mb-2">
-              <span className="block text-[20px] text-token-mono-700 flex justify-center">
-                <svg width="100" height="28" viewBox="0 0 100 28">
-                  <text
-                    x="50"
-                    y="22"
-                    fontSize="20"
-                    fontWeight="bold"
-                    stroke="#fff"
-                    strokeWidth="6"
-                    paintOrder="stroke"
-                    fill="#191C1D"
-                    textAnchor="middle"
-                    style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-                  >
-                    ご自宅で
-                  </text>
-                </svg>
+              <span className="block text-[20px] text-token-mono-700 flex justify-center text-stroke-white-6">
+                ご自宅で
               </span>
-              <span className="block text-[32px] flex flex-col items-center">
-                <svg width="260" height="40" viewBox="0 0 260 40">
-                  <defs>
-                    <linearGradient
-                      id="lp-diagnosis-title-gradation-svg"
-                      x1="0"
-                      y1="0"
-                      x2="1"
-                      y2="0"
-                    >
-                      <stop offset="0%" stopColor="#FEB970" />
-                      <stop offset="34%" stopColor="#FF6F21" />
-                      <stop offset="78%" stopColor="#FF5721" />
-                    </linearGradient>
-                  </defs>
-                  <text
-                    x="130"
-                    y="32"
-                    fontSize="32"
-                    fontWeight="bold"
-                    stroke="#fff"
-                    strokeWidth="6"
-                    paintOrder="stroke"
-                    fill="url(#lp-diagnosis-title-gradation-svg)"
-                    textAnchor="middle"
-                    style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-                  >
-                    補助金活用診断を
-                  </text>
-                </svg>
-                <svg width="140" height="40" viewBox="0 0 140 40">
-                  <text
-                    x="70"
-                    y="32"
-                    fontSize="32"
-                    fontWeight="bold"
-                    stroke="#fff"
-                    strokeWidth="6"
-                    paintOrder="stroke"
-                    fill="url(#lp-diagnosis-title-gradation-svg)"
-                    textAnchor="middle"
-                    style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-                  >
-                    受けると
-                  </text>
-                </svg>
+              <span className="relative inline-block">
+                <span className="block text-[32px] flex flex-col items-center bg-lp-diagnosis-title-gradation bg-clip-text text-transparent z-10 relative leading-[32px]">
+                  補助金活用診断を
+                  <br />
+                  受けると
+                </span>
+                <span className="absolute text-[32px] top-0 left-0 text-stroke-gradation-white-6 z-0 leading-[32px]">
+                  補助金活用診断を
+                  <br />
+                  受けると
+                </span>
               </span>
             </h2>
             <img
@@ -509,7 +345,7 @@ export default function Main({
             </div>
             <div className="flex gap-2">
               <CheckIcon />
-              <p className="text-token-mono-700 text-[12px] font-bold lg:text-[14px] relative top-[-5px]">
+              <p className="text-token-mono-700 text-[12px] font-bold lg:text-[14px] relative top-[-3px]">
                 Amazonギフト券1万円分で
                 <br />
                 お好きなものを購入できる！
