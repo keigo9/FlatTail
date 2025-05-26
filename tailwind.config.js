@@ -63,6 +63,8 @@ export default {
           "linear-gradient(40.05deg, #FEB970 -0.92%, #FF6F21 45%, #FF5721 101.13%)",
         "gradation-300":
           "linear-gradient(47.29deg, #F7CB6B 5.08%, #FAB37A 57.04%, #FBA980 100.09%)",
+        "lp-slider-gradation":
+          " linear-gradient(36.96deg, #FFD825 -5.85%, #FF9035 57.84%, #FF5721 110.62%)",
         "border-gradation":
           "linear-gradient(256.69deg, #FFD825 -12.54%, #FC9F2C 7.07%, #FC8800 23.33%)",
       },
@@ -90,6 +92,7 @@ export default {
       },
       fontFamily: {
         sans: ["Noto Sans JP", "sans-serif"],
+        din: ["DIN 2014 Narrow", "sans-serif"],
       },
     },
   },
