@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { FormData, FormStep } from "../../types";
 import Step1EnergyType from "./Step1EnergyType";
@@ -80,9 +81,7 @@ const FormContainer = ({
     }
   };
 
-  if (true) {
-    return <FormSuccess />;
-  }
+  return <FormSuccess />;
 
   const steps = [
     <Step1EnergyType
