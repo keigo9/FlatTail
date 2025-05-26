@@ -327,7 +327,7 @@ export default function Main({
             </div>
             <div className="flex gap-2">
               <CheckIcon />
-              <p className="text-token-mono-700 text-[12px] font-bold lg:text-[14px] relative top-[-3px]">
+              <p className="text-token-mono-700 text-[12px] font-bold lg:text-[14px] relative top-[-4px]">
                 Amazonギフト券1万円分で
                 <br />
                 お好きなものを購入できる！
