@@ -67,6 +67,8 @@ export default {
           " linear-gradient(36.96deg, #FFD825 -5.85%, #FF9035 57.84%, #FF5721 110.62%)",
         "lp-reason-title-gradation":
           " linear-gradient(51.64deg, #FEB970 -2.78%, #FF6F21 50.39%, #FF5721 78.18%)",
+        "lp-feature-title-gradation":
+          "linear-gradient(53.88deg, #FEB970 22.1%, #FF6F21 48.32%, #FF5721 62.03%)",
         "border-gradation":
           "linear-gradient(256.69deg, #FFD825 -12.54%, #FC9F2C 7.07%, #FC8800 23.33%)",
       },

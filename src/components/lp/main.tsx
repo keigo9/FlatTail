@@ -347,18 +347,19 @@ export default function Main({
         </p>
       </section>
       <section className="bg-gradation-200 px-4 py-8">
-        <div className="max-w-[1200px] mx-auto bg-token-mono-100 rounded-md px-4 py-8">
-          <h2 className="text-center font-bold text-[28px] text-token-main-600 mb-2">
+        <div className="max-w-[1200px] mx-auto bg-token-mono-100 rounded-md px-4 py-8 lg:px-8">
+          <h2 className="text-center font-bold text-[20px] text-token-mono-700 mb-6">
             フラットTAILの
-            <span className="block text-[36px] text-transparent bg-gradation-200 bg-clip-text leading-tight">
+            <span className="block text-[32px] text-transparent bg-lp-feature-title-gradation bg-clip-text">
               特徴
             </span>
           </h2>
-          <div className="flex flex-col gap-8 mt-8">
+          <div className="flex flex-col gap-6 sm:max-w-lg mx-auto lg:max-w-none lg:flex-row lg:gap-10">
             {[
               {
                 img: `${import.meta.env.BASE_URL}LP/feat1.png`,
                 tags: ["愛知県", "三重県", "岐阜県"],
+                tagAfter: "に",
                 title: "特化したサービス提供",
                 desc: "地域に特化した知識と経験が豊富なため、専門的な対応することができます。",
               },
@@ -371,36 +372,40 @@ export default function Main({
               {
                 img: `${import.meta.env.BASE_URL}LP/feat3.png`,
                 tags: ["外壁", "外構", "エクステリア"],
+                tagAfter: "など",
                 title: "総合的なサービスを提供",
                 desc: "地域特化で他の工事業者さまとも繋がりがあるため、総合的なサポートをすることができます。",
               },
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col sm:flex-row items-center gap-6 bg-token-main-100 rounded-lg p-6 shadow-sm"
+                className="flex items-center gap-3 lg:flex-col lg:flex-1"
               >
                 <div className="flex-shrink-0 mb-4 sm:mb-0">
                   <img
                     src={item.img}
                     alt={item.title}
-                    className="w-[90px] h-[90px] object-contain"
+                    className="w-[64px] h-[64px] object-contain lg:w-[80px] lg:h-[80px]"
                   />
                 </div>
-                <div className="flex-1">
-                  <div className="flex flex-wrap gap-2 mb-2">
+                <div className="flex-1 lg:text-center">
+                  <div className="flex flex-wrap items-center gap-2 mb-2 lg:justify-center">
                     {item.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="bg-token-main-200 text-token-main-600 rounded-full px-3 py-1 text-[15px] font-bold"
+                        className="bg-token-main-100 text-token-main-700 rounded-full px-2 py-1 text-[13px] font-bold lg:text-[16px]"
                       >
                         {tag}
                       </span>
                     ))}
+                    <span className="text-[12px] font-bold text-token-mono-700 lg:text-[14px]">
+                      {item.tagAfter}
+                    </span>
                   </div>
-                  <div className="font-bold text-[20px] mb-1 text-token-mono-700">
+                  <div className="font-bold text-[16px] mb-2 text-token-mono-700 lg:text-[18px]">
                     {item.title}
                   </div>
-                  <div className="text-[16px] text-token-mono-700">
+                  <div className="text-[12px] text-token-mono-700 lg:text-[16px]">
                     {item.desc}
                   </div>
                 </div>
