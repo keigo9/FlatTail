@@ -18,7 +18,7 @@ const Header = ({
     <>
       <header
         className={cn(
-          "w-full flex justify-between items-center py-2 px-4 fixed top-0 left-0 z-10 bg-token-mono-100",
+          "w-full flex justify-between items-center py-2 px-4 fixed top-0 left-0 z-10 bg-token-mono-100 z-[100]",
           `h-[var(--header-height-mobile)] sm:h-[var(--header-height-pc)]`
         )}
       >
