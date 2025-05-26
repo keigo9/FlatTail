@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { FormData, FormStep } from "../../types";
 import Step1EnergyType from "./Step1EnergyType";
@@ -39,7 +38,7 @@ const FormContainer = ({
   const [currentStep, setCurrentStep] = useState<FormStep>(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
+  // const [isComplete, setIsComplete] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const updateFields = (fields: Partial<FormData>) => {
