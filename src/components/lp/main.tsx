@@ -2,6 +2,7 @@ import { CheckIcon } from "@/assets/CheckIcon";
 import FixedButton from "../common/FixedButton";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { DiagnosisButton } from "./DiagnosisButton";
 
 export default function Main({
   setStartDiagnosis,
@@ -340,6 +341,7 @@ export default function Main({
           </p>
         </div>
       </section>
+      <DiagnosisButton />
       <FixedButton onClick={() => setStartDiagnosis(true)} showGlassIcon>
         診断スタート
       </FixedButton>
