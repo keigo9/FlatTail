@@ -15,7 +15,7 @@ export interface FormData {
 
   // step5
   month: number | null;
-  electricityBill: string | null;
+  electricityBill: ElectricityBill | null;
   usage: number | null;
   people: number | null;
   company: string | null;
@@ -50,4 +50,15 @@ export enum PropertyType {
 export enum PropertyStatus {
   CURRENT_RESIDENCE = "current_residence", // 現在のお住まい
   MOVING_LOCATION = "moving_location", // 引越し先
+}
+
+export enum ElectricityBill {
+  LESS_THAN_10000 = "~10,000円",
+  BETWEEN_10000_AND_15000 = "10,000円~", // 10,000円~15,000円
+  BETWEEN_15000_AND_20000 = "15,000円~", // 15,000円~20,000円
+  BETWEEN_20000_AND_25000 = "20,000円~", // 20,000円~25,000円
+  BETWEEN_25000_AND_30000 = "25,000円~", // 25,000円~30,000円
+  BETWEEN_30000_AND_35000 = "30,000円~", // 30,000円~35,000円
+  BETWEEN_35000_AND_40000 = "35,000円~", // 35,000円~40,000円
+  OVER_40000 = "40,000円~",
 }

@@ -1,4 +1,4 @@
-import { StepProps } from "../../types";
+import { ElectricityBill, StepProps } from "../../types";
 import { Label } from "../ui/label";
 import {
   Select,
@@ -7,19 +7,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
 import { Input } from "../ui/input";
-import { toHalfWidth } from "@/lib/stringUtil";
-
 const Step5UsageStatus = ({
   data,
   updateFields,
   setIsButtonDisabled,
 }: StepProps) => {
   const monthArray = Array.from({ length: 12 }, (_, i) => i + 1);
-  const [isEditing, setIsEditing] = useState(false);
-  const [priceError, setPriceError] = useState(false);
 
   useEffect(() => {
     setIsButtonDisabled(false);
@@ -68,41 +64,28 @@ const Step5UsageStatus = ({
             <div>
               <div className="flex items-center gap-2">
                 <p className="text-[14px] font-bold">約</p>
-                <div className="w-[78px]">
-                  <Input
-                    id="electricityBill"
-                    placeholder="---"
-                    value={
-                      isEditing
-                        ? data.electricityBill?.replace(/,/g, "") ?? ""
-                        : data.electricityBill
-                        ? Number(
-                            data.electricityBill.replace(/,/g, "")
-                          ).toLocaleString()
-                        : ""
+                <div className="w-[108px]">
+                  <Select
+                    value={data.electricityBill ?? ""}
+                    onValueChange={(value) =>
+                      updateFields({
+                        electricityBill: value as ElectricityBill,
+                      })
                     }
-                    onFocus={() => setIsEditing(true)}
-                    onBlur={() => setIsEditing(false)}
-                    onChange={(e) => {
-                      const raw = toHalfWidth(e.target.value.replace(/,/g, ""));
-                      if (Number.isNaN(Number(raw))) {
-                        setPriceError(true);
-                        updateFields({ electricityBill: "" });
-                      } else {
-                        setPriceError(false);
-                        updateFields({ electricityBill: raw });
-                      }
-                    }}
-                    required
-                    type="text"
-                    error={priceError}
-                  />
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="--" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {Object.values(ElectricityBill).map((price) => (
+                        <SelectItem key={price} value={price}>
+                          {price}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
-                <p className="text-[14px] font-bold">円</p>
               </div>
-              {priceError && (
-                <p className="text-xs text-red-500">{priceError}</p>
-              )}
             </div>
           </div>
         </div>
