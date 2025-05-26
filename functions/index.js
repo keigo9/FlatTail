@@ -80,42 +80,43 @@ exports.submitToKintone = onRequest(async (request, response) => {
 
     // 必須フィールドのバリデーション
     if (
-      !formData.energyType ||
-      !formData.propertyType ||
-      !formData.propertyStatus ||
+      // !formData.energyType ||
+      // !formData.propertyType ||
+      // !formData.propertyStatus ||
       !formData.postalCode ||
       !formData.prefecture ||
       !formData.address ||
       !formData.name ||
-      !formData.nameKana ||
+      // !formData.nameKana ||
       !formData.phone ||
       !formData.email
     ) {
       logger.warn("Missing required fields", { formData });
       throw new Error("必須フィールドが不足しています");
     }
+    // todo: 型のバリデーション
 
     // todo: formDataをKintoneのカラムに合わせて変換する
     const record = {
       // step1
-      ガスオール電化: { value: formData.energyType },
+      // ガスオール電化: { value: formData.energyType },
       // step2
-      比較物件: { value: formData.propertyType },
+      // 比較物件: { value: formData.propertyType },
       // step3
-      利用先: { value: formData.propertyStatus },
+      // 利用先: { value: formData.propertyStatus },
       // step4
       郵便番号: { value: formData.postalCode },
       都道府県: { value: formData.prefecture },
       それ以降の住所: { value: formData.address },
       // step5
-      利用月: { value: formData.month }, // Optional
+      // 利用月: { value: formData.month }, // Optional
       電気代: { value: formData.electricityBill }, // Optional
-      使用量: { value: formData.usage }, // Optional
+      // 使用量: { value: formData.usage }, // Optional
       世帯人数: { value: formData.people }, // Optional
-      使用電力会社: { value: formData.company }, // Optional
+      // 使用電力会社: { value: formData.company }, // Optional
       // step6
       お客様名: { value: formData.name },
-      ふりがな: { value: formData.nameKana },
+      // ふりがな: { value: formData.nameKana },
       電話番号: { value: formData.phone },
       メールアドレス: { value: formData.email },
 
