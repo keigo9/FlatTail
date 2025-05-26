@@ -38,7 +38,8 @@ const FormContainer = ({
   const [currentStep, setCurrentStep] = useState<FormStep>(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // const [isComplete, setIsComplete] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+  console.log(isComplete);
   const [error, setError] = useState<string | null>(null);
 
   const updateFields = (fields: Partial<FormData>) => {
