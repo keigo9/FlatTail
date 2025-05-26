@@ -98,7 +98,7 @@ export default {
       },
       fontFamily: {
         sans: ["Noto Sans JP", "sans-serif"],
-        din: ["DIN 2014 Narrow", "sans-serif"],
+        ibm: ["IBM Plex Sans Condensed", "sans-serif"],
       },
     },
   },

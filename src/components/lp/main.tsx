@@ -73,13 +73,16 @@ export default function Main({
                 >
                   <div className="bg-white rounded-md shadow p-4 w-[154px] aspect-ratio-[154/100] flex flex-col items-center h-full transition-all duration-300 relative lg:w-[170px] lg:aspect-ratio-[170/111]">
                     <div className="bg-token-main-200 text-token-main-600 font-bold rounded-full text-[11px] w-[40px] h-[40px] absolute top-[-15px] left-[-15px] flex items-center justify-center">
-                      実績<span className="text-[16px]">{idx + 1}</span>
+                      実績
+                      <span className="text-[16px] font-ibm ml-[2px]">
+                        {idx + 1}
+                      </span>
                     </div>
                     <div className="text-center text-token-mono-700 font-bold text-[12px] lg:text-[14px]">
                       {item.title}
                       <br />
                       {item.desc}{" "}
-                      <span className="bg-gradation-200 bg-clip-text text-transparent mr-1 text-[20px] lg:text-[24px]">
+                      <span className="bg-gradation-200 font-ibm bg-clip-text text-transparent mr-[1px] text-[20px] lg:text-[24px]">
                         {item.value}
                       </span>
                       <span className="bg-gradation-200 bg-clip-text text-transparent text-[14px] lg:text-[16px]">
@@ -115,7 +118,7 @@ export default function Main({
         <div className="flex flex-col sm:flex-row gap-8 items-center max-w-[1200px] mx-auto lg:px-4 lg:gap-4">
           {[
             {
-              num: "01",
+              num: `${import.meta.env.BASE_URL}LP/01.png`,
               img: `${import.meta.env.BASE_URL}LP/reason1.png`,
               alt: "理由1",
               main: (
@@ -130,7 +133,7 @@ export default function Main({
               ),
             },
             {
-              num: "02",
+              num: `${import.meta.env.BASE_URL}LP/02.png`,
               img: `${import.meta.env.BASE_URL}LP/reason2.png`,
               alt: "理由2",
               main: (
@@ -146,7 +149,7 @@ export default function Main({
               ),
             },
             {
-              num: "03",
+              num: `${import.meta.env.BASE_URL}LP/03.png`,
               img: `${import.meta.env.BASE_URL}LP/reason3.png`,
               alt: "理由3",
               main: (
@@ -169,35 +172,11 @@ export default function Main({
               className="bg-white rounded-xl shadow-md p-4 w-[90%] max-w-[500px] flex flex-col items-center relative lg:w-auto lg:flex-1"
             >
               <div className="absolute top-[-22px] left-[-10px]">
-                <svg width="60" height="54" viewBox="0 0 60 54">
-                  <defs>
-                    <linearGradient
-                      id={`num-grad-${idx}`}
-                      x1="0"
-                      y1="1"
-                      x2="1"
-                      y2="0"
-                    >
-                      <stop offset="5.08%" stopColor="#FFD825" />
-                      <stop offset="57.04%" stopColor="#FF9035" />
-                      <stop offset="100.09%" stopColor="#FF5721" />
-                    </linearGradient>
-                  </defs>
-                  <text
-                    x="50%"
-                    y="75%"
-                    textAnchor="middle"
-                    fontSize="48"
-                    fontWeight="bold"
-                    stroke="#fff"
-                    strokeWidth="6"
-                    paintOrder="stroke"
-                    fill={`url(#num-grad-${idx})`}
-                    style={{ fontFamily: "Noto Sans JP, sans-serif" }}
-                  >
-                    {item.num}
-                  </text>
-                </svg>
+                <img
+                  src={item.num}
+                  alt={item.alt}
+                  className="w-[48px] h-[52px] object-contain"
+                />
               </div>
               <img
                 src={item.img}
