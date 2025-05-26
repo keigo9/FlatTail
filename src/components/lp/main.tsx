@@ -283,7 +283,7 @@ export default function Main({
           </div>
         </div>
       </section>
-      <section className="bg-token-main-100">
+      <section className="bg-token-main-100 pb-[45px]">
         <div
           className="relative w-full flex flex-col items-center justify-center max-w-[1000px] mx-auto"
           style={{
