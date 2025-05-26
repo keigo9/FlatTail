@@ -115,7 +115,7 @@ export default function Main({
             </span>
           </span>
         </h2>
-        <div className="flex flex-col sm:flex-row gap-8 items-center max-w-[1200px] mx-auto lg:px-4 lg:gap-4">
+        <div className="flex flex-col sm:flex-row gap-8 items-center max-w-[1200px] mx-auto lg:px-4 lg:gap-4 lg:items-stretch">
           {[
             {
               num: `${import.meta.env.BASE_URL}LP/01.png`,
@@ -139,7 +139,7 @@ export default function Main({
               main: (
                 <p className="font-bold">
                   <span className="text-[16px]">安心・安全の</span>
-                  <span className="text-[30px] bg-gradation-200 bg-clip-text text-transparent">
+                  <span className="text-[30px] font-ibm bg-gradation-200 bg-clip-text text-transparent mr-[1px] ml-[4px] leading-[20px] relative top-[2px]">
                     30
                   </span>
                   <span className="text-[18px] bg-gradation-200 bg-clip-text text-transparent">
@@ -157,7 +157,7 @@ export default function Main({
                   <span className="text-[14px]">AI機能で素早い故障検知</span>
                   <br />
                   <span className="text-[16px]">メンテナンス・出張費</span>
-                  <span className="text-[30px] bg-gradation-200 bg-clip-text text-transparent">
+                  <span className="text-[30px] font-ibm bg-gradation-200 bg-clip-text text-transparent mr-[1px] ml-[6px] leading-[20px] relative top-[2px]">
                     0
                   </span>
                   <span className="text-[18px] bg-gradation-200 bg-clip-text text-transparent">
@@ -183,7 +183,9 @@ export default function Main({
                 alt={item.alt}
                 className="rounded-md w-full object-cover mb-2"
               />
-              <div className="text-center mt-2">{item.main}</div>
+              <div className="text-center mt-2 lg:h-full lg:flex lg:items-center">
+                {item.main}
+              </div>
             </div>
           ))}
         </div>
