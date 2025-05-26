@@ -80,7 +80,7 @@ const FormContainer = ({
     }
   };
 
-  if (isComplete) {
+  if (true) {
     return <FormSuccess />;
   }
 
