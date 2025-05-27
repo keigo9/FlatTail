@@ -36,8 +36,7 @@ export interface StepProps {
 }
 
 export enum EnergyType {
-  ELECTRIC_AND_CITY_GAS = "electric_and_city_gas", // 電気 & 都市ガス
-  ELECTRIC_AND_PROPANE_GAS = "electric_and_propane_gas", // 電気 & プロパンガス
+  GAS = "gas", // ガス
   ALL_ELECTRIC = "all_electric", // オール電化
 }
 

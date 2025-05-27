@@ -1,11 +1,10 @@
 import { EnergyType, StepProps } from "../../types";
 import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
-import { ClipIcon } from "@/assets/ClipIcon";
+// import { ClipIcon } from "@/assets/ClipIcon";
 import { RightIcon } from "@/assets/RightIcon";
 import { SelectCard } from "./SelectCard";
 import { GusIcon } from "@/assets/GusIcon";
-import { cn } from "@/lib/utils";
 
 const Step1EnergyType = ({
   data,
@@ -27,50 +26,21 @@ const Step1EnergyType = ({
   const cardData = [
     {
       icon: (
-        <div className="flex items-center justify-center">
-          <RightIcon />
-          <ClipIcon />
-        </div>
-      ),
-      title: (
         <>
-          電気 &amp;
-          <br className="sm:hidden" /> 都市ガス
-        </>
-      ),
-      type: EnergyType.ELECTRIC_AND_CITY_GAS,
-    },
-    {
-      icon: (
-        <div className="flex items-center justify-center">
-          <RightIcon />
           <GusIcon />
-        </div>
-      ),
-      title: (
-        <>
-          電気 &amp;
-          <br className="sm:hidden" /> プロパンガス
         </>
       ),
-      type: EnergyType.ELECTRIC_AND_PROPANE_GAS,
+      title: "ガス",
+      type: EnergyType.GAS,
     },
     {
       icon: (
         <>
-          <RightIcon
-            className={cn(
-              data.energyType === EnergyType.ALL_ELECTRIC
-                ? "text-token-main-800"
-                : "text-token-main-600"
-            )}
-            size={32}
-          />
+          <RightIcon />
         </>
       ),
       title: "オール電化",
       type: EnergyType.ALL_ELECTRIC,
-      isWhite: true,
     },
   ];
 
