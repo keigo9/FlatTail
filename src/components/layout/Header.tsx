@@ -48,7 +48,7 @@ const Header = ({
             </span>
           </Button>
           <span className="text-mono-1000 text-sm font-bold">
-            平日 00:00〜00:00 対応受付
+            平日 09:00〜18:00 対応受付
           </span>
         </div>
         {/* モバイルの場合はボタン表示 */}
