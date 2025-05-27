@@ -47,10 +47,10 @@ const FormSuccess = () => {
         </div>
 
         <Button
-          className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white px-6 py-2"
+          className="border-2 border-token-main-600 text-token-main-600 bg-white rounded-full px-[24px] py-[14px] text-[16px] h-[44px] hover:bg-token-main-100"
           onClick={() => window.location.reload()}
         >
-          ホームに戻る
+          診断トップに戻る
         </Button>
       </div>
     </div>
