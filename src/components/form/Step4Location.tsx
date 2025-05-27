@@ -143,12 +143,16 @@ const Step4Location = ({
               onValueChange={(value) => updateFields({ prefecture: value })}
               required
             >
-              <SelectTrigger>
+              <SelectTrigger className="!text-[16px]">
                 <SelectValue placeholder="選択してください" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="!text-[16px]">
                 {prefectures.map((prefecture) => (
-                  <SelectItem key={prefecture} value={prefecture}>
+                  <SelectItem
+                    key={prefecture}
+                    value={prefecture}
+                    className="!text-[16px]"
+                  >
                     {prefecture}
                   </SelectItem>
                 ))}
