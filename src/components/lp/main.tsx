@@ -34,7 +34,7 @@ export default function Main({
         <div className="w-full max-w-full overflow-hidden">
           <Carousel
             opts={{
-              // loop: true,
+              loop: true,
               containScroll: "trimSnaps",
               align: "start",
               startIndex: 1, // 2番目のスライド（index: 1）から開始
