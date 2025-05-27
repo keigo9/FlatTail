@@ -147,7 +147,7 @@ const Step6ContactInfo = ({
         </div>
 
         <div className="flex items-center sm:w-full sm:justify-center">
-          <label className="flex items-center cursor-pointer relative gap-2 mt-4 sm:mt-8">
+          <label className="flex items-center cursor-pointer relative gap-4 mt-4 sm:mt-8">
             <div
               className={cn(
                 "w-[15px] h-[15px] border-2 rounded-sm relative",
