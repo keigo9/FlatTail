@@ -92,8 +92,8 @@ export default {
           },
         },
         "floating-y": {
-          "0%": { transform: "translate(-50%, -10%)" },
-          "100%": { transform: "translateY(-50%, 10%)" },
+          "0%": { transform: "translate(-50%, -30%)" },
+          "100%": { transform: "translate(-50%, 10%)" },
         },
       },
       animation: {
