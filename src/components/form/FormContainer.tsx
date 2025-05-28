@@ -18,13 +18,11 @@ const INITIAL_DATA: FormData = {
   postalCode: "",
   prefecture: "",
   address: "",
-  month: null,
   electricityBill: null,
   usage: null,
   people: null,
   company: null,
   name: "",
-  nameKana: "",
   email: "",
   phone: "",
 };

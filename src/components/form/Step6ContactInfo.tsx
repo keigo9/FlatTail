@@ -24,7 +24,6 @@ const Step6ContactInfo = ({
   useEffect(() => {
     if (
       data.name &&
-      data.nameKana &&
       data.phone &&
       data.email &&
       validateEmail(data.email) &&
@@ -37,7 +36,6 @@ const Step6ContactInfo = ({
     }
   }, [
     data.name,
-    data.nameKana,
     data.phone,
     data.email,
     emailAgain,
@@ -60,17 +58,6 @@ const Step6ContactInfo = ({
             placeholder="(例) 田中太郎"
             value={data.name}
             onChange={(e) => updateFields({ name: e.target.value })}
-            required
-          />
-        </div>
-
-        <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
-          <Label htmlFor="nameKana">ふりがな</Label>
-          <Input
-            id="nameKana"
-            placeholder="(例) たなかたろう"
-            value={data.nameKana}
-            onChange={(e) => updateFields({ nameKana: e.target.value })}
             required
           />
         </div>

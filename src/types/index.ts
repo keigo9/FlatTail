@@ -14,7 +14,6 @@ export interface FormData {
   address: string;
 
   // step5
-  month: number | null;
   electricityBill: ElectricityBill | null;
   usage: number | null;
   people: number | null;
@@ -22,7 +21,6 @@ export interface FormData {
 
   // step6
   name: string;
-  nameKana: string;
   phone: string;
   email: string;
 }

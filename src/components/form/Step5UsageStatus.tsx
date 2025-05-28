@@ -15,8 +15,6 @@ const Step5UsageStatus = ({
   updateFields,
   setIsButtonDisabled,
 }: StepProps) => {
-  const monthArray = Array.from({ length: 12 }, (_, i) => i + 1);
-
   useEffect(() => {
     setIsButtonDisabled(false);
   }, [setIsButtonDisabled]);
@@ -38,33 +36,10 @@ const Step5UsageStatus = ({
             電気料金
           </Label>
           <div className="flex items-center justify-between sm:justify-start sm:gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-[68px]">
-                <Select
-                  value={data.month ? String(data.month) : ""}
-                  onValueChange={(value) =>
-                    updateFields({ month: Number(value) })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="--" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {monthArray.map((month) => (
-                      <SelectItem key={month} value={String(month)}>
-                        {month}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <p className="text-[14px] font-bold">月</p>
-              <p className="text-[12px] font-bold">の電気料金が</p>
-            </div>
             <div>
               <div className="flex items-center gap-2">
                 <p className="text-[14px] font-bold">約</p>
-                <div className="w-[108px]">
+                <div className="w-[131px]">
                   <Select
                     value={data.electricityBill ?? ""}
                     onValueChange={(value) =>
@@ -73,10 +48,10 @@ const Step5UsageStatus = ({
                       })
                     }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-[16px]">
                       <SelectValue placeholder="--" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="!text-[16px]">
                       {Object.values(ElectricityBill).map((price) => (
                         <SelectItem key={price} value={price}>
                           {price}
