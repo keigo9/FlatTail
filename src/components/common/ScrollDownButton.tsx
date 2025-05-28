@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
 export const ScrollDownButton = () => {
-  const [show, setShow] = useState(true);
+  const [canShow, setCanShow] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const checkShouldShow = () => {
-      // CSSカスタムプロパティの値を取得
+    const checkCanShow = () => {
       const root = document.documentElement;
       const headerHeight =
         parseInt(
@@ -14,33 +14,34 @@ export const ScrollDownButton = () => {
       const main = document.querySelector("main");
       const mainHeight = main ? main.getBoundingClientRect().height : 0;
       const contentHeight = headerHeight + mainHeight;
-      // 100dvhはwindow.innerHeightと同等
-      setShow(contentHeight > window.innerHeight);
+      setCanShow(contentHeight > window.innerHeight);
     };
 
-    checkShouldShow();
-    window.addEventListener("resize", checkShouldShow);
-    return () => window.removeEventListener("resize", checkShouldShow);
+    checkCanShow();
+    window.addEventListener("resize", checkCanShow);
+    return () => window.removeEventListener("resize", checkCanShow);
   }, []);
 
-  // スクロール位置による表示制御
   useEffect(() => {
+    if (!canShow) {
+      setShow(false);
+      return;
+    }
     const handleScroll = () => {
-      setShow((prev) => prev && window.scrollY < 10);
+      setShow(window.scrollY < 10);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleClick = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-  };
+  }, [canShow]);
 
   if (!show) return null;
 
   return (
     <button
-      onClick={handleClick}
+      onClick={() =>
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
+      }
       className="sm:hidden fixed text-[12px] px-[12px] py-[9px] left-1/2 bottom-[154px] -translate-x-1/2 z-50 bg-token-accent-200 text-white font-bold rounded-full flex items-center gap-1 transition-all"
     >
       下にスクロール
