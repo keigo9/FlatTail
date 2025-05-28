@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "kintone-keigo-dev"
-  }
+    "default": "kintone-api-form"
+  },
+  "targets": {},
+  "etags": {}
 }
