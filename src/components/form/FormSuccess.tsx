@@ -5,7 +5,7 @@ const FormSuccess = () => {
     <div
       className={`min-h-[calc(100dvh-var(--header-height-mobile)-5rem)] sm:min-h-[calc(100dvh-var(--header-height-pc)-10rem)]`}
     >
-      <div className="w-full max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md text-center">
+      <div className="w-full max-w-2xl mx-auto p-6 bg-white rounded-lg text-center">
         <div className="my-8 flex flex-col items-center gap-4">
           <div>
             <svg
