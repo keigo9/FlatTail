@@ -89,7 +89,6 @@ exports.submitToKintone = onRequest(
         !formData.prefecture ||
         !formData.address ||
         !formData.name ||
-        // !formData.nameKana ||
         !formData.phone ||
         !formData.email
       ) {
@@ -111,14 +110,12 @@ exports.submitToKintone = onRequest(
         都道府県: { value: formData.prefecture },
         それ以降の住所: { value: formData.address },
         // step5
-        // 利用月: { value: formData.month }, // Optional
         // 電気代: { value: formData.electricityBill }, // Optional
         // 使用量: { value: formData.usage }, // Optional
         世帯人数: { value: formData.people }, // Optional
         // 使用電力会社: { value: formData.company }, // Optional
         // step6
         お客様名: { value: formData.name },
-        // ふりがな: { value: formData.nameKana },
         電話番号: { value: formData.phone },
         メールアドレス: { value: formData.email },
 
