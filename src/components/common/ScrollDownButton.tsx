@@ -11,12 +11,11 @@ export const ScrollDownButton = () => {
         parseInt(
           getComputedStyle(root).getPropertyValue("--header-height-mobile")
         ) || 0;
-      const footerHeight =
-        parseInt(getComputedStyle(root).getPropertyValue("--footer-height")) ||
-        0;
-      const minH = window.innerHeight - headerHeight - footerHeight;
+      const main = document.querySelector("main");
+      const mainHeight = main ? main.getBoundingClientRect().height : 0;
+      const contentHeight = headerHeight + mainHeight;
       // 100dvhはwindow.innerHeightと同等
-      setShow(minH > window.innerHeight);
+      setShow(contentHeight > window.innerHeight);
     };
 
     checkShouldShow();
