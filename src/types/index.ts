@@ -14,7 +14,7 @@ export interface FormData {
   address: string;
 
   // step5
-  electricityBill: ElectricityBill | null;
+  electricityBill: ElectricityBillValue | null;
   usage: number | null;
   people: number | null;
   company: string | null;
@@ -49,13 +49,24 @@ export enum PropertyStatus {
   MOVING_LOCATION = "moving_location", // 引越し先
 }
 
-export enum ElectricityBill {
-  LESS_THAN_10000 = "~10,000円",
-  BETWEEN_10000_AND_15000 = "10,000円~", // 10,000円~15,000円
-  BETWEEN_15000_AND_20000 = "15,000円~", // 15,000円~20,000円
-  BETWEEN_20000_AND_25000 = "20,000円~", // 20,000円~25,000円
-  BETWEEN_25000_AND_30000 = "25,000円~", // 25,000円~30,000円
-  BETWEEN_30000_AND_35000 = "30,000円~", // 30,000円~35,000円
-  BETWEEN_35000_AND_40000 = "35,000円~", // 35,000円~40,000円
-  OVER_40000 = "40,000円~",
+export enum ElectricityBillValue {
+  LESS_THAN_10000 = "less_than_10000",
+  BETWEEN_10000_AND_15000 = "between_10000_and_15000",
+  BETWEEN_15000_AND_20000 = "between_15000_and_20000",
+  BETWEEN_20000_AND_25000 = "between_20000_and_25000",
+  BETWEEN_25000_AND_30000 = "between_25000_and_30000",
+  BETWEEN_30000_AND_35000 = "between_30000_and_35000",
+  BETWEEN_35000_AND_40000 = "between_35000_and_40000",
+  OVER_40000 = "over_40000",
 }
+
+export const ElectricityBillLabel: Record<ElectricityBillValue, string> = {
+  [ElectricityBillValue.LESS_THAN_10000]: "~10,000円",
+  [ElectricityBillValue.BETWEEN_10000_AND_15000]: "10,000円~",
+  [ElectricityBillValue.BETWEEN_15000_AND_20000]: "15,000円~",
+  [ElectricityBillValue.BETWEEN_20000_AND_25000]: "20,000円~",
+  [ElectricityBillValue.BETWEEN_25000_AND_30000]: "25,000円~",
+  [ElectricityBillValue.BETWEEN_30000_AND_35000]: "30,000円~",
+  [ElectricityBillValue.BETWEEN_35000_AND_40000]: "35,000円~",
+  [ElectricityBillValue.OVER_40000]: "40,000円~",
+};

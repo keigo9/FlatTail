@@ -1,4 +1,3 @@
-import { ElectricityBill, StepProps } from "../../types";
 import { Label } from "../ui/label";
 import {
   Select,
@@ -10,6 +9,8 @@ import {
 import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
 import { Input } from "../ui/input";
+import { StepProps, ElectricityBillValue, ElectricityBillLabel } from "@/types";
+
 const Step5UsageStatus = ({
   data,
   updateFields,
@@ -44,7 +45,7 @@ const Step5UsageStatus = ({
                     value={data.electricityBill ?? ""}
                     onValueChange={(value) =>
                       updateFields({
-                        electricityBill: value as ElectricityBill,
+                        electricityBill: value as ElectricityBillValue,
                       })
                     }
                   >
@@ -52,9 +53,9 @@ const Step5UsageStatus = ({
                       <SelectValue placeholder="--" />
                     </SelectTrigger>
                     <SelectContent className="!text-[16px]">
-                      {Object.values(ElectricityBill).map((price) => (
-                        <SelectItem key={price} value={price}>
-                          {price}
+                      {Object.values(ElectricityBillValue).map((value) => (
+                        <SelectItem key={value} value={value}>
+                          {ElectricityBillLabel[value]}
                         </SelectItem>
                       ))}
                     </SelectContent>

@@ -10,6 +10,7 @@
 // Updated to use process.env for Cloud Run compatibility
 const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
+const { z } = require("zod");
 // const functions = require("firebase-functions"); // No longer needed
 
 // Create and deploy your first functions
@@ -25,6 +26,60 @@ const allowedOrigins = [
   "https://keigo9.github.io", // テスト環境
   // "https://keigo9.github.io", // 本番環境
 ];
+
+const formDataSchema = z.object({
+  energyType: z.enum(["gas", "all_electric"]),
+  propertyType: z.enum(["detached_house", "apartment", "store"]),
+  propertyStatus: z.enum(["current_residence", "moving_location"]),
+  postalCode: z.string(),
+  prefecture: z.string(),
+  address: z.string(),
+  electricityBill: z
+    .enum([
+      "less_than_10000",
+      "between_10000_and_15000",
+      "between_15000_and_20000",
+      "between_20000_and_25000",
+      "between_25000_and_30000",
+      "between_30000_and_35000",
+      "between_35000_and_40000",
+      "over_40000",
+    ])
+    .optional(),
+  usage: z.number().optional(),
+  people: z.number().optional(),
+  company: z.string().optional(),
+  name: z.string(),
+  phone: z.string(),
+  email: z.string(),
+});
+
+// Kintoneのselectのvalueにenumのvalueを設定する
+const kintoneSelectValue = {
+  energyType: {
+    gas: "ガス",
+    all_electric: "オール電化",
+  },
+  propertyType: {
+    detached_house: "戸建て",
+    apartment: "マンション・アパート",
+    store: "店舗",
+  },
+  propertyStatus: {
+    current_residence: "現在のお住まい",
+    moving_location: "引越し先",
+  },
+  electricityBill: {
+    less_than_10000: "~10,000円",
+    between_10000_and_15000: "10,000円~",
+    between_15000_and_20000: "15,000円~",
+    between_20000_and_25000: "20,000円~",
+    between_25000_and_30000: "25,000円~",
+    between_30000_and_35000: "30,000円~",
+    between_35000_and_40000: "35,000円~",
+    over_40000: "40,000円~",
+  },
+};
 
 exports.submitToKintone = onRequest(
   { region: "asia-northeast1" }, // 東京リージョンでデプロイ
@@ -80,46 +135,46 @@ exports.submitToKintone = onRequest(
 
       const formData = request.body;
 
-      // 必須フィールドのバリデーション
-      if (
-        // !formData.energyType ||
-        // !formData.propertyType ||
-        // !formData.propertyStatus ||
-        !formData.postalCode ||
-        !formData.prefecture ||
-        !formData.address ||
-        !formData.name ||
-        !formData.phone ||
-        !formData.email
-      ) {
-        logger.warn("Missing required fields", { formData });
-        throw new Error("必須フィールドが不足しています");
+      // バリデーション
+      const parseResult = formDataSchema.safeParse(request.body);
+      if (!parseResult.success) {
+        // parseResult.error で詳細なエラーが取れる
+        response.status(400).json({
+          success: false,
+          message: "入力値が不正です",
+          errors: parseResult.error.errors,
+        });
+        return;
       }
-      // todo: 型のバリデーション
 
-      // todo: formDataをKintoneのカラムに合わせて変換する
       const record = {
         // step1
-        // ガスオール電化: { value: formData.energyType },
+        ガスオール電化: {
+          value: kintoneSelectValue.energyType[formData.energyType],
+        },
         // step2
-        // 比較物件: { value: formData.propertyType },
+        比較物件: {
+          value: kintoneSelectValue.propertyType[formData.propertyType],
+        },
         // step3
-        // 利用先: { value: formData.propertyStatus },
+        利用先: {
+          value: kintoneSelectValue.propertyStatus[formData.propertyStatus],
+        },
         // step4
         郵便番号: { value: formData.postalCode },
         都道府県: { value: formData.prefecture },
         それ以降の住所: { value: formData.address },
         // step5
-        // 電気代: { value: formData.electricityBill }, // Optional
-        // 使用量: { value: formData.usage }, // Optional
+        電気代: {
+          value: kintoneSelectValue.electricityBill[formData.electricityBill],
+        }, // Optional
+        使用量: { value: formData.usage }, // Optional
         世帯人数: { value: formData.people }, // Optional
-        // 使用電力会社: { value: formData.company }, // Optional
+        使用電力会社: { value: formData.company }, // Optional
         // step6
         お客様名: { value: formData.name },
         電話番号: { value: formData.phone },
         メールアドレス: { value: formData.email },
-
-        文字列__複数行_: { value: "API連携テスト送信" },
       };
 
       logger.info("Sending to Kintone", {

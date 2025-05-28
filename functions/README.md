@@ -45,13 +45,25 @@ npm run deploy
 Function URL (submitToKintone(us-central1)): https://submittokintone-XXXXXXXXXXXX-XX.a.run.app
 ```
 
-## Cloud Run 環境変数の設定
+## Cloud Run(本番用) 環境変数の設定
+
+- 第二世代で動かしているので、こちらの方法で環境変数のセットが必要
 
 Cloud Run で動作させる場合、Kintone 連携用の環境変数を gcloud コマンドで設定する必要があります。
 
+gcloud のプロジェクトを指定
+
+```
+gcloud config get-value project
+```
+
+```
+gcloud config set project kintone-api-form
+```
+
 ```bash
 gcloud run services update submittokintone \
-  --region us-central1 \
+  --region asia-northeast1 \
   --update-env-vars KINTONE_API_KEY=あなたのAPIキー,KINTONE_DOMAIN=あなたのドメイン,KINTONE_APP_ID=あなたのアプリID
 ```
 
