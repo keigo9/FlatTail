@@ -168,9 +168,9 @@ exports.submitToKintone = onRequest(
         電気代: {
           value: kintoneSelectValue.electricityBill[formData.electricityBill],
         }, // Optional
-        使用量: { value: formData.usage }, // Optional
+        使用量: { value: `${formData.usage}kwh` }, // Optional
         世帯人数: { value: formData.people }, // Optional
-        使用電力会社: { value: formData.company }, // Optional
+        使用電力会社名: { value: formData.company }, // Optional
         // step6
         お客様名: { value: formData.name },
         電話番号: { value: formData.phone },
