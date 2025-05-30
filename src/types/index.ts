@@ -48,7 +48,7 @@ export enum ElectricityBillValue {
 }
 
 export const ElectricityBillLabel: Record<ElectricityBillValue, string> = {
-  [ElectricityBillValue.LESS_THAN_10000]: " 〜10,000",
+  [ElectricityBillValue.LESS_THAN_10000]: "〜10,000",
   [ElectricityBillValue.BETWEEN_10000_AND_15000]: "10,000〜15,000",
   [ElectricityBillValue.BETWEEN_15000_AND_20000]: "15,000〜20,000",
   [ElectricityBillValue.OVER_20000]: "20,000〜",
@@ -63,7 +63,7 @@ export enum PropertyType {
 
 export const PropertyTypeLabel: Record<PropertyType, string> = {
   [PropertyType.DETACHED_HOUSE]: "持ち家（戸建て）",
-  [PropertyType.BUYING_PLANNED]: "購入予定(建築中を含む)",
+  [PropertyType.BUYING_PLANNED]: "購入予定（建築中を含む）",
   [PropertyType.RENTAL]: "賃貸",
 };
 
@@ -77,7 +77,7 @@ export enum BuildingOld {
 }
 
 export const BuildingOldLabel: Record<BuildingOld, string> = {
-  [BuildingOld.LESS_THAN_5]: "5年未満",
+  [BuildingOld.LESS_THAN_5]: "～5年",
   [BuildingOld.BETWEEN_5_AND_10]: "5〜10年",
   [BuildingOld.BETWEEN_10_AND_15]: "10〜15年",
   [BuildingOld.BETWEEN_15_AND_20]: "15〜20年",

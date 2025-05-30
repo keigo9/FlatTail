@@ -28,27 +28,30 @@ const allowedOrigins = [
 ];
 
 const formDataSchema = z.object({
-  energyType: z.enum(["gas", "all_electric"]),
-  propertyType: z.enum(["detached_house", "apartment", "store"]),
-  propertyStatus: z.enum(["current_residence", "moving_location"]),
-  postalCode: z.string(),
-  prefecture: z.string(),
-  address: z.string(),
-  electricityBill: z
-    .enum([
-      "less_than_10000",
-      "between_10000_and_15000",
-      "between_15000_and_20000",
-      "between_20000_and_25000",
-      "between_25000_and_30000",
-      "between_30000_and_35000",
-      "between_35000_and_40000",
-      "over_40000",
-    ])
-    .optional(),
-  usage: z.number().optional(),
+  // step1
+  energyType: z.enum(["gas", "all_electric", "unknown"]),
+  // step2
+  feelAboutEnergyFee: z.enum(["very_high", "a_bit_concerned", "not_concerned"]),
+  // step3
+  electricityBill: z.enum([
+    "less_than_10000",
+    "between_10000_and_15000",
+    "between_15000_and_20000",
+    "over_20000",
+    "unknown",
+  ]),
+  // step4
+  propertyType: z.enum(["detached_house", "buying_planned", "rental"]),
+  buildingOld: z.enum([
+    "less_than_5",
+    "between_5_and_10",
+    "between_10_and_15",
+    "between_15_and_20",
+    "over_20",
+    "unknown",
+  ]),
   people: z.number().optional(),
-  company: z.string().optional(),
+  // step5
   name: z.string(),
   phone: z.string(),
   email: z.string(),
@@ -59,25 +62,30 @@ const kintoneSelectValue = {
   energyType: {
     gas: "ガス",
     all_electric: "オール電化",
+    unknown: "わからない",
   },
-  propertyType: {
-    detached_house: "戸建て",
-    apartment: "マンション・アパート",
-    store: "店舗",
-  },
-  propertyStatus: {
-    current_residence: "現在のお住まい",
-    moving_location: "引越し先",
+  feelAboutEnergyFee: {
+    very_high: "すごく高くなったと感じる",
+    a_bit_concerned: "ちょっと気になる",
+    not_concerned: "特に気にしていない",
   },
   electricityBill: {
-    less_than_10000: "~10,000円",
-    between_10000_and_15000: "10,000円~",
-    between_15000_and_20000: "15,000円~",
-    between_20000_and_25000: "20,000円~",
-    between_25000_and_30000: "25,000円~",
-    between_30000_and_35000: "30,000円~",
-    between_35000_and_40000: "35,000円~",
-    over_40000: "40,000円~",
+    less_than_10000: "〜10,000円",
+    between_10000_and_15000: "10,000〜15,000円",
+    between_15000_and_20000: "15,000〜20,000円",
+    over_20000: "20,000〜円",
+    unknown: "わからない",
+  },
+  propertyType: {
+    detached_house: "持ち家（戸建て）",
+    buying_planned: "購入予定（建築中を含む）",
+    rental: "賃貸",
+  },
+  buildingOld: {
+    less_than_5: "～5年",
+    between_5_and_10: "5〜10年",
+    between_10_and_15: "10〜15年",
+    between_15_and_20: "15〜20年",
   },
 };
 
@@ -149,29 +157,22 @@ exports.submitToKintone = onRequest(
 
       const record = {
         // step1
-        ガスオール電化: {
+        ガス・オール電化: {
           value: kintoneSelectValue.energyType[formData.energyType],
         },
         // step2
-        比較物件: {
-          value: kintoneSelectValue.propertyType[formData.propertyType],
+        光熱費所感: {
+          value: kintoneSelectValue.feelAboutEnergyFee[formData.feelAboutEnergyFee],
         },
         // step3
-        利用先: {
-          value: kintoneSelectValue.propertyStatus[formData.propertyStatus],
-        },
-        // step4
-        郵便番号: { value: formData.postalCode },
-        都道府県: { value: formData.prefecture },
-        それ以降の住所: { value: formData.address },
-        // step5
         電気代: {
           value: kintoneSelectValue.electricityBill[formData.electricityBill],
-        }, // Optional
-        使用量: { value: `${formData.usage}kwh` }, // Optional
+        },
+        // step4
+        物件情報: { value: formData.propertyType[formData.propertyType] },
         世帯人数: { value: formData.people }, // Optional
-        使用電力会社名: { value: formData.company }, // Optional
-        // step6
+        築年数: { value: kintoneSelectValue.buildingOld[formData.buildingOld] },
+        // step5
         お客様名: { value: formData.name },
         電話番号: { value: formData.phone },
         メールアドレス: { value: formData.email },
