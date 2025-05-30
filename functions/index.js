@@ -62,7 +62,7 @@ const kintoneSelectValue = {
   energyType: {
     gas: "ガス",
     all_electric: "オール電化",
-    unknown: "わからない",
+    unknown: "わからない(顧客回答)",
   },
   feelAboutEnergyFee: {
     very_high: "すごく高くなったと感じる",
@@ -87,7 +87,7 @@ const kintoneSelectValue = {
     between_10_and_15: "10〜15年",
     between_15_and_20: "15〜20年",
     over_20: "20年以上",
-    unknown: "わからない",
+    unknown: "わからない(顧客回答)",
   },
 };
 
