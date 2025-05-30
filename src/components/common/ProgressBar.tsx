@@ -3,14 +3,7 @@ interface ProgressBarProps {
   totalSteps: number;
 }
 
-const stepLabels = [
-  "使用種別",
-  "物件種別",
-  "物件状況",
-  "使用場所",
-  "使用状況",
-  "連絡先",
-];
+const stepLabels = ["使用種別", "光熱費所感", "電気料金", "使用状況", "連絡先"];
 
 export const ProgressBar = ({ currentStep, totalSteps }: ProgressBarProps) => {
   return (
