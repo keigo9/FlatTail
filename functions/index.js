@@ -74,11 +74,11 @@ const kintoneSelectValue = {
     between_10000_and_15000: "10,000〜15,000円",
     between_15000_and_20000: "15,000〜20,000円",
     over_20000: "20,000〜円",
-    unknown: "わからない",
+    unknown: "わからない(顧客回答)",
   },
   propertyType: {
     detached_house: "持ち家（戸建て）",
-    buying_planned: "購入予定（建築中を含む）",
+    buying_planned: "購入予定（建築中含む）",
     rental: "賃貸",
   },
   buildingOld: {
@@ -86,6 +86,8 @@ const kintoneSelectValue = {
     between_5_and_10: "5〜10年",
     between_10_and_15: "10〜15年",
     between_15_and_20: "15〜20年",
+    over_20: "20年以上",
+    unknown: "わからない",
   },
 };
 
@@ -157,7 +159,7 @@ exports.submitToKintone = onRequest(
 
       const record = {
         // step1
-        "ガス・オール電化": {
+        ガスオール電化: {
           value: kintoneSelectValue.energyType[formData.energyType],
         },
         // step2
