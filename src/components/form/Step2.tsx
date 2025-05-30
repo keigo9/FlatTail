@@ -2,10 +2,10 @@ import { FeelAboutEnergyFee, StepProps } from "../../types";
 import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
 import { SelectCard } from "./SelectCard";
-import { HomeIcon } from "@/assets/HomeIcon";
-import { BuildingIcon } from "@/assets/BuildingIcon";
-import { StoreIcon } from "@/assets/StoreIcon";
 import { cn } from "@/lib/utils";
+import { HighFaceIcon } from "@/assets/HighFaceIcon";
+import { NormalFaceIcon } from "@/assets/NormalFaceIcon";
+import { HappyFaceIcon } from "@/assets/HappyFaceIcon";
 
 const Step2 = ({ data, updateFields, setIsButtonDisabled }: StepProps) => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const Step2 = ({ data, updateFields, setIsButtonDisabled }: StepProps) => {
 
   const cardData = [
     {
-      icon: <HomeIcon />,
+      icon: <HighFaceIcon />,
       title: (
         <>
           すごく高く
@@ -33,7 +33,7 @@ const Step2 = ({ data, updateFields, setIsButtonDisabled }: StepProps) => {
       type: FeelAboutEnergyFee.VERY_HIGH,
     },
     {
-      icon: <BuildingIcon />,
+      icon: <NormalFaceIcon />,
       title: (
         <>
           ちょっと
@@ -45,7 +45,7 @@ const Step2 = ({ data, updateFields, setIsButtonDisabled }: StepProps) => {
     },
     {
       icon: (
-        <StoreIcon
+        <HappyFaceIcon
           className={cn(
             data.feelAboutEnergyFee === FeelAboutEnergyFee.NOT_CONCERNED
               ? "text-token-main-800"
