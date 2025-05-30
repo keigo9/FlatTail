@@ -157,19 +157,22 @@ exports.submitToKintone = onRequest(
 
       const record = {
         // step1
-        ガス・オール電化: {
+        "ガス・オール電化": {
           value: kintoneSelectValue.energyType[formData.energyType],
         },
         // step2
         光熱費所感: {
-          value: kintoneSelectValue.feelAboutEnergyFee[formData.feelAboutEnergyFee],
+          value:
+            kintoneSelectValue.feelAboutEnergyFee[formData.feelAboutEnergyFee],
         },
         // step3
         電気代: {
           value: kintoneSelectValue.electricityBill[formData.electricityBill],
         },
         // step4
-        物件情報: { value: formData.propertyType[formData.propertyType] },
+        物件情報: {
+          value: kintoneSelectValue.propertyType[formData.propertyType],
+        },
         世帯人数: { value: formData.people }, // Optional
         築年数: { value: kintoneSelectValue.buildingOld[formData.buildingOld] },
         // step5
