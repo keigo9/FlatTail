@@ -7,14 +7,8 @@ import { toHalfWidth } from "@/lib/stringUtil";
 import { cn } from "@/lib/utils";
 import { ScrollDownButton } from "../common/ScrollDownButton";
 
-const Step6ContactInfo = ({
-  data,
-  updateFields,
-  setIsButtonDisabled,
-}: StepProps) => {
+const Step5 = ({ data, updateFields, setIsButtonDisabled }: StepProps) => {
   const [emailError, setEmailError] = useState("");
-  const [emailAgain, setEmailAgain] = useState("");
-  const [emailAgainError, setEmailAgainError] = useState("");
   const [isTermsChecked, setIsTermsChecked] = useState(false);
 
   function validateEmail(email: string) {
@@ -27,21 +21,13 @@ const Step6ContactInfo = ({
       data.phone &&
       data.email &&
       validateEmail(data.email) &&
-      emailAgain === data.email &&
       isTermsChecked
     ) {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
     }
-  }, [
-    data.name,
-    data.phone,
-    data.email,
-    emailAgain,
-    isTermsChecked,
-    setIsButtonDisabled,
-  ]);
+  }, [data.name, data.phone, data.email, isTermsChecked, setIsButtonDisabled]);
 
   return (
     <div className="w-full">
@@ -50,7 +36,7 @@ const Step6ContactInfo = ({
         description="※お客様の情報が一般に公開されることはありません"
       />
 
-      <form className="mt-8 space-y-6 sm:flex sm:flex-wrap sm:items-center sm:gap-4 sm:space-y-0">
+      <form className="mt-8 space-y-6 sm:flex sm:flex-wrap sm:flex-start sm:gap-4 sm:space-y-0">
         <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
           <Label htmlFor="name">お名前</Label>
           <Input
@@ -103,33 +89,6 @@ const Step6ContactInfo = ({
             }}
             description="半角英数字でご入力ください"
             error={emailError}
-          />
-        </div>
-
-        <div className="space-y-2 sm:w-[calc(50%-0.5rem)]">
-          <Label htmlFor="emailAgain">メールアドレス再入力</Label>
-          <Input
-            id="emailAgain"
-            type="email"
-            placeholder="(例) info@flat-tail.com.jp"
-            value={emailAgain}
-            onChange={(e) => {
-              const formattedEmail = toHalfWidth(e.target.value);
-              setEmailAgain(formattedEmail);
-            }}
-            onBlur={() => {
-              if (emailAgain === "") {
-                setEmailAgainError("");
-                return;
-              }
-              if (emailAgain !== data.email) {
-                setEmailAgainError("メールアドレスが一致しません");
-              } else {
-                setEmailAgainError("");
-              }
-            }}
-            required
-            error={emailAgainError}
           />
         </div>
 
@@ -191,4 +150,4 @@ const Step6ContactInfo = ({
   );
 };
 
-export default Step6ContactInfo;
+export default Step5;

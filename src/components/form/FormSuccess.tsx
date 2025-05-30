@@ -28,9 +28,9 @@ const FormSuccess = () => {
                   y2="-11.8344"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#FFD825" />
-                  <stop offset="0.54686" stop-color="#FF9035" />
-                  <stop offset="1" stop-color="#FF5721" />
+                  <stop stopColor="#FFD825" />
+                  <stop offset="0.54686" stopColor="#FF9035" />
+                  <stop offset="1" stopColor="#FF5721" />
                 </linearGradient>
               </defs>
             </svg>

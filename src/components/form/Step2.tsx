@@ -1,4 +1,4 @@
-import { PropertyType, StepProps } from "../../types";
+import { FeelAboutEnergyFee, StepProps } from "../../types";
 import { useEffect } from "react";
 import { QuestionHeader } from "./QuestionHeader";
 import { SelectCard } from "./SelectCard";
@@ -7,52 +7,54 @@ import { BuildingIcon } from "@/assets/BuildingIcon";
 import { StoreIcon } from "@/assets/StoreIcon";
 import { cn } from "@/lib/utils";
 
-const Step2PropertyType = ({
-  data,
-  updateFields,
-  setIsButtonDisabled,
-}: StepProps) => {
+const Step2 = ({ data, updateFields, setIsButtonDisabled }: StepProps) => {
   useEffect(() => {
-    if (data.propertyType) {
+    if (data.feelAboutEnergyFee) {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
     }
-  }, [data.propertyType, setIsButtonDisabled]);
+  }, [data.feelAboutEnergyFee, setIsButtonDisabled]);
 
-  const handlePropertyTypeSelect = (type: PropertyType) => {
-    updateFields({ propertyType: type });
+  const handlePropertyTypeSelect = (type: FeelAboutEnergyFee) => {
+    updateFields({ feelAboutEnergyFee: type });
   };
 
   const cardData = [
     {
       icon: <HomeIcon />,
-      title: "戸建て",
-      type: PropertyType.DETACHED_HOUSE,
+      title: (
+        <>
+          すごく高く
+          <br className="sm:hidden" />
+          なったと感じる
+        </>
+      ),
+      type: FeelAboutEnergyFee.VERY_HIGH,
     },
     {
       icon: <BuildingIcon />,
       title: (
         <>
-          マンション・
+          ちょっと
           <br className="sm:hidden" />
-          アパート
+          気になる
         </>
       ),
-      type: PropertyType.APARTMENT,
+      type: FeelAboutEnergyFee.A_BIT_CONCERNED,
     },
     {
       icon: (
         <StoreIcon
           className={cn(
-            data.propertyType === PropertyType.STORE
+            data.feelAboutEnergyFee === FeelAboutEnergyFee.NOT_CONCERNED
               ? "text-token-main-800"
               : "text-token-main-600"
           )}
         />
       ),
-      title: "店舗",
-      type: PropertyType.STORE,
+      title: "特に気にしていない",
+      type: FeelAboutEnergyFee.NOT_CONCERNED,
       isWhite: true,
     },
   ];
@@ -62,9 +64,9 @@ const Step2PropertyType = ({
       <QuestionHeader
         question={
           <>
-            電気の料金比較をしたい物件は
+            最近の光熱費についてどう
             <br className="sm:hidden" />
-            どちらですか？
+            感じていますか？
           </>
         }
       />
@@ -72,10 +74,10 @@ const Step2PropertyType = ({
       <SelectCard
         cardData={cardData}
         handleTypeSelect={handlePropertyTypeSelect}
-        currentType={data.propertyType}
+        currentType={data.feelAboutEnergyFee}
       />
     </div>
   );
 };
 
-export default Step2PropertyType;
+export default Step2;

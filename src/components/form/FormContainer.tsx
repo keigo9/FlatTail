@@ -1,27 +1,22 @@
 import { useState } from "react";
 import { FormData, FormStep } from "../../types";
-import Step1EnergyType from "./Step1EnergyType";
-import Step2PropertyType from "./Step2PropertyType";
-import Step3PropertyStatus from "./Step3PropertyStatus";
-import Step4Location from "./Step4Location";
-import Step5UsageStatus from "./Step5UsageStatus";
-import Step6ContactInfo from "./Step6ContactInfo";
 import FormSuccess from "./FormSuccess";
 import { submitToKintone } from "../../services/kintoneService";
 import FixedButton from "../common/FixedButton";
 import { ProgressBar } from "../common/ProgressBar";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
+import Step4 from "./Step4";
+import Step5 from "./Step5";
 
 const INITIAL_DATA: FormData = {
   energyType: null,
-  propertyType: null,
-  propertyStatus: null,
-  postalCode: "",
-  prefecture: "",
-  address: "",
+  feelAboutEnergyFee: null,
   electricityBill: null,
-  usage: null,
+  propertyType: null,
   people: null,
-  company: null,
+  buildingOld: null,
   name: "",
   email: "",
   phone: "",
@@ -44,7 +39,7 @@ const FormContainer = ({
   };
 
   const goToNext = () => {
-    if (currentStep === 6) {
+    if (currentStep === 5) {
       handleSubmit();
       return;
     }
@@ -83,38 +78,32 @@ const FormContainer = ({
   }
 
   const steps = [
-    <Step1EnergyType
+    <Step1
       key="step1"
       data={data}
       updateFields={updateFields}
       setIsButtonDisabled={setIsButtonDisabled}
     />,
-    <Step2PropertyType
+    <Step2
       key="step2"
       data={data}
       updateFields={updateFields}
       setIsButtonDisabled={setIsButtonDisabled}
     />,
-    <Step3PropertyStatus
+    <Step3
       key="step3"
       data={data}
       updateFields={updateFields}
       setIsButtonDisabled={setIsButtonDisabled}
     />,
-    <Step4Location
+    <Step4
       key="step4"
       data={data}
       updateFields={updateFields}
       setIsButtonDisabled={setIsButtonDisabled}
     />,
-    <Step5UsageStatus
+    <Step5
       key="step5"
-      data={data}
-      updateFields={updateFields}
-      setIsButtonDisabled={setIsButtonDisabled}
-    />,
-    <Step6ContactInfo
-      key="step6"
       data={data}
       updateFields={updateFields}
       setIsButtonDisabled={setIsButtonDisabled}
@@ -127,7 +116,7 @@ const FormContainer = ({
         <div className="p-3 bg-red-100 text-red-700 rounded-md">{error}</div>
       )}
       <div className="w-full max-w-2xl mx-auto pb-[80px]">
-        <ProgressBar currentStep={currentStep} totalSteps={6} />
+        <ProgressBar currentStep={currentStep} totalSteps={5} />
         <div className="mt-6 sm:mt-12 bg-white rounded-lg p-6">
           {steps[currentStep - 1]}
         </div>

@@ -5,12 +5,10 @@ import { QuestionHeader } from "./QuestionHeader";
 import { RightIcon } from "@/assets/RightIcon";
 import { SelectCard } from "./SelectCard";
 import { GusIcon } from "@/assets/GusIcon";
+import { QuestionIcon } from "@/assets/QuestionIcon";
+import { cn } from "@/lib/utils";
 
-const Step1EnergyType = ({
-  data,
-  updateFields,
-  setIsButtonDisabled,
-}: StepProps) => {
+const Step1 = ({ data, updateFields, setIsButtonDisabled }: StepProps) => {
   useEffect(() => {
     if (data.energyType) {
       setIsButtonDisabled(false);
@@ -26,11 +24,12 @@ const Step1EnergyType = ({
   const cardData = [
     {
       icon: (
-        <>
+        <div className="flex items-center gap-2">
+          <RightIcon />
           <GusIcon />
-        </>
+        </div>
       ),
-      title: "ガス",
+      title: "電気＆ガス",
       type: EnergyType.GAS,
     },
     {
@@ -41,6 +40,22 @@ const Step1EnergyType = ({
       ),
       title: "オール電化",
       type: EnergyType.ALL_ELECTRIC,
+    },
+    {
+      icon: (
+        <>
+          <QuestionIcon
+            className={cn(
+              data.energyType === EnergyType.UNKNOWN
+                ? "text-token-main-800"
+                : "text-token-main-600"
+            )}
+          />
+        </>
+      ),
+      title: "わからない",
+      type: EnergyType.UNKNOWN,
+      isWhite: true,
     },
   ];
 
@@ -65,4 +80,4 @@ const Step1EnergyType = ({
   );
 };
 
-export default Step1EnergyType;
+export default Step1;
