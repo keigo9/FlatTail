@@ -32,17 +32,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Debug Secrets
+      - name: Debug Environment Variables
         run: |
-          echo "Checking secrets configuration..."
-          if [ -n "${{ secrets.VITE_FIREBASE_FUNCTION_URL }}" ]; then
+          echo "Checking environment variables configuration..."
+          if [ -n "${{ vars.VITE_FIREBASE_FUNCTION_URL }}" ]; then
             echo "✅ VITE_FIREBASE_FUNCTION_URL is set"
-            echo "Length: ${#VITE_FIREBASE_FUNCTION_URL}"
+            echo "Value: ${{ vars.VITE_FIREBASE_FUNCTION_URL }}"
           else
             echo "❌ VITE_FIREBASE_FUNCTION_URL is NOT set or empty"
           fi
-        env:
-          VITE_FIREBASE_FUNCTION_URL: ${{ secrets.VITE_FIREBASE_FUNCTION_URL }}
 
       - name: Build
         run: |
