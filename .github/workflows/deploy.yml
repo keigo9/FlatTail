@@ -41,6 +41,8 @@ jobs:
           else
             echo "❌ VITE_FIREBASE_FUNCTION_URL is NOT set or empty"
           fi
+        env:
+          VITE_FIREBASE_FUNCTION_URL: ${{ vars.VITE_FIREBASE_FUNCTION_URL }}
 
       - name: Build
         run: |
